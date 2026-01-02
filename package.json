@@ -1,0 +1,50 @@
+{
+	"name": "@zokugun/is-it-type",
+	"description": "Zero-dependency TypeScript predicates for confidently checking any value.",
+	"version": "0.0.0",
+	"author": {
+		"name": "Baptiste Augrain",
+		"email": "daiyam@zokugun.org"
+	},
+	"license": "MIT",
+	"homepage": "https://github.com/zokugun/node-is-it-type",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/zokugun/node-is-it-type.git"
+	},
+	"bugs": {
+		"url": "https://github.com/zokugun/node-is-it-type/discussions/categories/issue-triage"
+	},
+	"main": "lib/index.js",
+	"scripts": {
+		"commit": "cz",
+		"compile": "tsc -p src",
+		"lint": "xo",
+		"lint:fix": "xo --fix",
+		"prepare": "husky; fixpack || true",
+		"prepublishOnly": "npm run compile",
+		"release": "release-it",
+		"test": "vitest run",
+		"watch:source": "tsc-watch -p src",
+		"watch:test": "vitest"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"@commitlint/cli": "^19.7.1",
+		"@commitlint/config-conventional": "^19.7.1",
+		"@types/fs-extra": "^11.0.4",
+		"@types/node": "^20.14.8",
+		"commitizen": "^4.3.1",
+		"fixpack": "^4.0.0",
+		"fs-extra": "^11.3.3",
+		"globby": "^16.1.0",
+		"husky": "^9.1.7",
+		"lint-staged": "^16.1.4",
+		"release-it": "^18.1.2",
+		"tsc-watch": "^6.3.0",
+		"typescript": "^5.7.3",
+		"vitest": "^4.0.16",
+		"xo": "0.60.0"
+	},
+	"keywords": []
+}
