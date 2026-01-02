@@ -19,7 +19,7 @@ jobs:
 
         if [[ "${BODY}" =~ "CLOSE THIS ISSUE" ]]; then
           gh issue edit "${ISSUE}" --add-label "S-not-preapproved"
-          gh issue close "${ISSUE}" --comment "Please don't open issues directly, use GitHub Discussions instead. See: https://github.com/REPOSITORY_SLUG/issues/1"
+          gh issue close "${ISSUE}" --comment "Please don't open issues directly, use GitHub Discussions instead. See: https://github.com/zokugun/node-is-it-type/issues/1"
           gh issue lock "${ISSUE}"
         fi
       env:
