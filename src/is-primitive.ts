@@ -1,3 +1,5 @@
+import { type Primitive } from './types.js';
+
 export function isPrimitive(item: unknown): item is Primitive {
 	const type = typeof item;
 
