@@ -20,6 +20,12 @@ it('isNullable(x)', function () {
 	expect(isNullable(42)).to.be.false;
 	expect(isNullable(new Object(42))).to.be.false;
 	expect(isNullable('42')).to.be.false;
+	expect(isNullable(-42)).to.be.false;
+	expect(isNullable(-8)).to.be.false;
+	expect(isNullable(-3.14)).to.be.false;
+	expect(isNullable(0)).to.be.false;
+	expect(isNullable(3.14)).to.be.false;
+	expect(isNullable(8)).to.be.false;
 	expect(isNullable(9_007_199_254_740_991n)).to.be.false;
 	expect(isNullable(new Object(9_007_199_254_740_991n))).to.be.false;
 	expect(isNullable(Infinity)).to.be.false;

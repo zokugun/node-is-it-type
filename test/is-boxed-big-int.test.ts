@@ -21,6 +21,12 @@ it('isBoxedBigInt(x)', function () {
 	expect(isBoxedBigInt(42)).to.be.false;
 	expect(isBoxedBigInt(new Object(42))).to.be.false;
 	expect(isBoxedBigInt('42')).to.be.false;
+	expect(isBoxedBigInt(-42)).to.be.false;
+	expect(isBoxedBigInt(-8)).to.be.false;
+	expect(isBoxedBigInt(-3.14)).to.be.false;
+	expect(isBoxedBigInt(0)).to.be.false;
+	expect(isBoxedBigInt(3.14)).to.be.false;
+	expect(isBoxedBigInt(8)).to.be.false;
 	expect(isBoxedBigInt(9_007_199_254_740_991n)).to.be.false;
 	expect(isBoxedBigInt(Infinity)).to.be.false;
 	expect(isBoxedBigInt(Number.NaN)).to.be.false;

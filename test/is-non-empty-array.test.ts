@@ -20,6 +20,12 @@ it('isNonEmptyArray(x)', function () {
 	expect(isNonEmptyArray(42)).to.be.false;
 	expect(isNonEmptyArray(new Object(42))).to.be.false;
 	expect(isNonEmptyArray('42')).to.be.false;
+	expect(isNonEmptyArray(-42)).to.be.false;
+	expect(isNonEmptyArray(-8)).to.be.false;
+	expect(isNonEmptyArray(-3.14)).to.be.false;
+	expect(isNonEmptyArray(0)).to.be.false;
+	expect(isNonEmptyArray(3.14)).to.be.false;
+	expect(isNonEmptyArray(8)).to.be.false;
 	expect(isNonEmptyArray(9_007_199_254_740_991n)).to.be.false;
 	expect(isNonEmptyArray(new Object(9_007_199_254_740_991n))).to.be.false;
 	expect(isNonEmptyArray(Infinity)).to.be.false;

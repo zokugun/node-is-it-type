@@ -20,6 +20,12 @@ it('isArrayLike(x)', function () {
 	expect(isArrayLike(42)).to.be.false;
 	expect(isArrayLike(new Object(42))).to.be.false;
 	expect(isArrayLike('42')).to.be.false;
+	expect(isArrayLike(-42)).to.be.false;
+	expect(isArrayLike(-8)).to.be.false;
+	expect(isArrayLike(-3.14)).to.be.false;
+	expect(isArrayLike(0)).to.be.false;
+	expect(isArrayLike(3.14)).to.be.false;
+	expect(isArrayLike(8)).to.be.false;
 	expect(isArrayLike(9_007_199_254_740_991n)).to.be.false;
 	expect(isArrayLike(new Object(9_007_199_254_740_991n))).to.be.false;
 	expect(isArrayLike(Infinity)).to.be.false;

@@ -19,6 +19,12 @@ it('isNonBlankString(x)', function () {
 	expect(isNonBlankString('   ')).to.be.false;
 	expect(isNonBlankString(42)).to.be.false;
 	expect(isNonBlankString(new Object(42))).to.be.false;
+	expect(isNonBlankString(-42)).to.be.false;
+	expect(isNonBlankString(-8)).to.be.false;
+	expect(isNonBlankString(-3.14)).to.be.false;
+	expect(isNonBlankString(0)).to.be.false;
+	expect(isNonBlankString(3.14)).to.be.false;
+	expect(isNonBlankString(8)).to.be.false;
 	expect(isNonBlankString(new Object('hello world'))).to.be.false;
 	expect(isNonBlankString(9_007_199_254_740_991n)).to.be.false;
 	expect(isNonBlankString(new Object(9_007_199_254_740_991n))).to.be.false;

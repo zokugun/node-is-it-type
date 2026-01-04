@@ -21,6 +21,12 @@ it('isSymbol(x)', function () {
 	expect(isSymbol(42)).to.be.false;
 	expect(isSymbol(new Object(42))).to.be.false;
 	expect(isSymbol('42')).to.be.false;
+	expect(isSymbol(-42)).to.be.false;
+	expect(isSymbol(-8)).to.be.false;
+	expect(isSymbol(-3.14)).to.be.false;
+	expect(isSymbol(0)).to.be.false;
+	expect(isSymbol(3.14)).to.be.false;
+	expect(isSymbol(8)).to.be.false;
 	expect(isSymbol(9_007_199_254_740_991n)).to.be.false;
 	expect(isSymbol(new Object(9_007_199_254_740_991n))).to.be.false;
 	expect(isSymbol(Infinity)).to.be.false;

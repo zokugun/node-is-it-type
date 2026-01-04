@@ -20,6 +20,12 @@ it('isBoxedString(x)', function () {
 	expect(isBoxedString(42)).to.be.false;
 	expect(isBoxedString(new Object(42))).to.be.false;
 	expect(isBoxedString('42')).to.be.false;
+	expect(isBoxedString(-42)).to.be.false;
+	expect(isBoxedString(-8)).to.be.false;
+	expect(isBoxedString(-3.14)).to.be.false;
+	expect(isBoxedString(0)).to.be.false;
+	expect(isBoxedString(3.14)).to.be.false;
+	expect(isBoxedString(8)).to.be.false;
 	expect(isBoxedString(9_007_199_254_740_991n)).to.be.false;
 	expect(isBoxedString(new Object(9_007_199_254_740_991n))).to.be.false;
 	expect(isBoxedString(Infinity)).to.be.false;

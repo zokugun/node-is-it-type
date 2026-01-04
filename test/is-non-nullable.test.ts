@@ -16,6 +16,12 @@ it('isNonNullable(x)', function () {
 	expect(isNonNullable(42)).to.be.true;
 	expect(isNonNullable(new Object(42))).to.be.true;
 	expect(isNonNullable('42')).to.be.true;
+	expect(isNonNullable(-42)).to.be.true;
+	expect(isNonNullable(-8)).to.be.true;
+	expect(isNonNullable(-3.14)).to.be.true;
+	expect(isNonNullable(0)).to.be.true;
+	expect(isNonNullable(3.14)).to.be.true;
+	expect(isNonNullable(8)).to.be.true;
 	expect(isNonNullable(9_007_199_254_740_991n)).to.be.true;
 	expect(isNonNullable(new Object(9_007_199_254_740_991n))).to.be.true;
 	expect(isNonNullable(Infinity)).to.be.true;

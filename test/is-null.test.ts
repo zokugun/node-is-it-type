@@ -20,6 +20,12 @@ it('isNull(x)', function () {
 	expect(isNull(42)).to.be.false;
 	expect(isNull(new Object(42))).to.be.false;
 	expect(isNull('42')).to.be.false;
+	expect(isNull(-42)).to.be.false;
+	expect(isNull(-8)).to.be.false;
+	expect(isNull(-3.14)).to.be.false;
+	expect(isNull(0)).to.be.false;
+	expect(isNull(3.14)).to.be.false;
+	expect(isNull(8)).to.be.false;
 	expect(isNull(9_007_199_254_740_991n)).to.be.false;
 	expect(isNull(new Object(9_007_199_254_740_991n))).to.be.false;
 	expect(isNull(Infinity)).to.be.false;

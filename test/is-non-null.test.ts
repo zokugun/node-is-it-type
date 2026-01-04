@@ -17,6 +17,12 @@ it('isNonNull(x)', function () {
 	expect(isNonNull(42)).to.be.true;
 	expect(isNonNull(new Object(42))).to.be.true;
 	expect(isNonNull('42')).to.be.true;
+	expect(isNonNull(-42)).to.be.true;
+	expect(isNonNull(-8)).to.be.true;
+	expect(isNonNull(-3.14)).to.be.true;
+	expect(isNonNull(0)).to.be.true;
+	expect(isNonNull(3.14)).to.be.true;
+	expect(isNonNull(8)).to.be.true;
 	expect(isNonNull(9_007_199_254_740_991n)).to.be.true;
 	expect(isNonNull(new Object(9_007_199_254_740_991n))).to.be.true;
 	expect(isNonNull(Infinity)).to.be.true;

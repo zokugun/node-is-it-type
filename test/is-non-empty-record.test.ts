@@ -31,6 +31,12 @@ it('isNonEmptyRecord(x)', function () {
 	expect(isNonEmptyRecord(42)).to.be.false;
 	expect(isNonEmptyRecord(new Object(42))).to.be.false;
 	expect(isNonEmptyRecord('42')).to.be.false;
+	expect(isNonEmptyRecord(-42)).to.be.false;
+	expect(isNonEmptyRecord(-8)).to.be.false;
+	expect(isNonEmptyRecord(-3.14)).to.be.false;
+	expect(isNonEmptyRecord(0)).to.be.false;
+	expect(isNonEmptyRecord(3.14)).to.be.false;
+	expect(isNonEmptyRecord(8)).to.be.false;
 	expect(isNonEmptyRecord(9_007_199_254_740_991n)).to.be.false;
 	expect(isNonEmptyRecord(new Object(9_007_199_254_740_991n))).to.be.false;
 	expect(isNonEmptyRecord(Infinity)).to.be.false;

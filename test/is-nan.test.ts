@@ -21,6 +21,12 @@ it('isNaN(x)', function () {
 	expect(isNaN(42)).to.be.false;
 	expect(isNaN(new Object(42))).to.be.false;
 	expect(isNaN('42')).to.be.false;
+	expect(isNaN(-42)).to.be.false;
+	expect(isNaN(-8)).to.be.false;
+	expect(isNaN(-3.14)).to.be.false;
+	expect(isNaN(0)).to.be.false;
+	expect(isNaN(3.14)).to.be.false;
+	expect(isNaN(8)).to.be.false;
 	expect(isNaN(9_007_199_254_740_991n)).to.be.false;
 	expect(isNaN(new Object(9_007_199_254_740_991n))).to.be.false;
 	expect(isNaN(Infinity)).to.be.false;

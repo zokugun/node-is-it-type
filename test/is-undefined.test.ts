@@ -20,6 +20,12 @@ it('isUndefined(x)', function () {
 	expect(isUndefined(42)).to.be.false;
 	expect(isUndefined(new Object(42))).to.be.false;
 	expect(isUndefined('42')).to.be.false;
+	expect(isUndefined(-42)).to.be.false;
+	expect(isUndefined(-8)).to.be.false;
+	expect(isUndefined(-3.14)).to.be.false;
+	expect(isUndefined(0)).to.be.false;
+	expect(isUndefined(3.14)).to.be.false;
+	expect(isUndefined(8)).to.be.false;
 	expect(isUndefined(9_007_199_254_740_991n)).to.be.false;
 	expect(isUndefined(new Object(9_007_199_254_740_991n))).to.be.false;
 	expect(isUndefined(Infinity)).to.be.false;

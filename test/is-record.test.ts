@@ -32,6 +32,12 @@ it('isRecord(x)', function () {
 	expect(isRecord(42)).to.be.false;
 	expect(isRecord(new Object(42))).to.be.false;
 	expect(isRecord('42')).to.be.false;
+	expect(isRecord(-42)).to.be.false;
+	expect(isRecord(-8)).to.be.false;
+	expect(isRecord(-3.14)).to.be.false;
+	expect(isRecord(0)).to.be.false;
+	expect(isRecord(3.14)).to.be.false;
+	expect(isRecord(8)).to.be.false;
 	expect(isRecord(9_007_199_254_740_991n)).to.be.false;
 	expect(isRecord(new Object(9_007_199_254_740_991n))).to.be.false;
 	expect(isRecord(Infinity)).to.be.false;

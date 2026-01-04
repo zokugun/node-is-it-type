@@ -21,6 +21,12 @@ it('isBoxedPrimitive(x)', function () {
 	expect(isBoxedPrimitive('hello world')).to.be.false;
 	expect(isBoxedPrimitive(42)).to.be.false;
 	expect(isBoxedPrimitive('42')).to.be.false;
+	expect(isBoxedPrimitive(-42)).to.be.false;
+	expect(isBoxedPrimitive(-8)).to.be.false;
+	expect(isBoxedPrimitive(-3.14)).to.be.false;
+	expect(isBoxedPrimitive(0)).to.be.false;
+	expect(isBoxedPrimitive(3.14)).to.be.false;
+	expect(isBoxedPrimitive(8)).to.be.false;
 	expect(isBoxedPrimitive(9_007_199_254_740_991n)).to.be.false;
 	expect(isBoxedPrimitive(Infinity)).to.be.false;
 	expect(isBoxedPrimitive(Number.NaN)).to.be.false;

@@ -20,6 +20,12 @@ it('isString(x)', function () {
 	expect(isString(new Object('hello world'))).to.be.false;
 	expect(isString(42)).to.be.false;
 	expect(isString(new Object(42))).to.be.false;
+	expect(isString(-42)).to.be.false;
+	expect(isString(-8)).to.be.false;
+	expect(isString(-3.14)).to.be.false;
+	expect(isString(0)).to.be.false;
+	expect(isString(3.14)).to.be.false;
+	expect(isString(8)).to.be.false;
 	expect(isString(9_007_199_254_740_991n)).to.be.false;
 	expect(isString(new Object(9_007_199_254_740_991n))).to.be.false;
 	expect(isString(Infinity)).to.be.false;

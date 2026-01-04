@@ -17,6 +17,12 @@ it('isNonUndefined(x)', function () {
 	expect(isNonUndefined(42)).to.be.true;
 	expect(isNonUndefined(new Object(42))).to.be.true;
 	expect(isNonUndefined('42')).to.be.true;
+	expect(isNonUndefined(-42)).to.be.true;
+	expect(isNonUndefined(-8)).to.be.true;
+	expect(isNonUndefined(-3.14)).to.be.true;
+	expect(isNonUndefined(0)).to.be.true;
+	expect(isNonUndefined(3.14)).to.be.true;
+	expect(isNonUndefined(8)).to.be.true;
 	expect(isNonUndefined(9_007_199_254_740_991n)).to.be.true;
 	expect(isNonUndefined(new Object(9_007_199_254_740_991n))).to.be.true;
 	expect(isNonUndefined(Infinity)).to.be.true;

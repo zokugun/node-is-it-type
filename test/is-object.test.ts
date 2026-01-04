@@ -44,6 +44,12 @@ it('isObject(x)', function () {
 	expect(isObject('hello world')).to.be.false;
 	expect(isObject(42)).to.be.false;
 	expect(isObject('42')).to.be.false;
+	expect(isObject(-42)).to.be.false;
+	expect(isObject(-8)).to.be.false;
+	expect(isObject(-3.14)).to.be.false;
+	expect(isObject(0)).to.be.false;
+	expect(isObject(3.14)).to.be.false;
+	expect(isObject(8)).to.be.false;
 	expect(isObject(9_007_199_254_740_991n)).to.be.false;
 	expect(isObject(Infinity)).to.be.false;
 	expect(isObject(Number.NaN)).to.be.false;

@@ -20,6 +20,12 @@ it('isNodeError(x)', function () {
 	expect(isNodeError(42)).to.be.false;
 	expect(isNodeError(new Object(42))).to.be.false;
 	expect(isNodeError('42')).to.be.false;
+	expect(isNodeError(-42)).to.be.false;
+	expect(isNodeError(-8)).to.be.false;
+	expect(isNodeError(-3.14)).to.be.false;
+	expect(isNodeError(0)).to.be.false;
+	expect(isNodeError(3.14)).to.be.false;
+	expect(isNodeError(8)).to.be.false;
 	expect(isNodeError(9_007_199_254_740_991n)).to.be.false;
 	expect(isNodeError(new Object(9_007_199_254_740_991n))).to.be.false;
 	expect(isNodeError(Infinity)).to.be.false;

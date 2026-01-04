@@ -9,6 +9,12 @@ it('isNumberLike(x)', function () {
 	expect(isNumberLike(new Object(9_007_199_254_740_991n))).to.be.true;
 	expect(isNumberLike(Infinity)).to.be.true;
 	expect(isNumberLike(Number.NaN)).to.be.true;
+	expect(isNumberLike(-42)).to.be.true;
+	expect(isNumberLike(-8)).to.be.true;
+	expect(isNumberLike(-3.14)).to.be.true;
+	expect(isNumberLike(0)).to.be.true;
+	expect(isNumberLike(3.14)).to.be.true;
+	expect(isNumberLike(8)).to.be.true;
 
 	// false
 	expect(isNumberLike([])).to.be.false;

@@ -21,6 +21,12 @@ it('isError(x)', function () {
 	expect(isError(42)).to.be.false;
 	expect(isError(new Object(42))).to.be.false;
 	expect(isError('42')).to.be.false;
+	expect(isError(-42)).to.be.false;
+	expect(isError(-8)).to.be.false;
+	expect(isError(-3.14)).to.be.false;
+	expect(isError(0)).to.be.false;
+	expect(isError(3.14)).to.be.false;
+	expect(isError(8)).to.be.false;
 	expect(isError(9_007_199_254_740_991n)).to.be.false;
 	expect(isError(new Object(9_007_199_254_740_991n))).to.be.false;
 	expect(isError(Infinity)).to.be.false;

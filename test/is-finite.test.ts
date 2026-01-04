@@ -7,6 +7,12 @@ it('isFinite(x)', function () {
 	expect(isFinite(new Object(42))).to.be.true;
 	expect(isFinite(9_007_199_254_740_991n)).to.be.true;
 	expect(isFinite(new Object(9_007_199_254_740_991n))).to.be.true;
+	expect(isFinite(-42)).to.be.true;
+	expect(isFinite(-8)).to.be.true;
+	expect(isFinite(-3.14)).to.be.true;
+	expect(isFinite(0)).to.be.true;
+	expect(isFinite(3.14)).to.be.true;
+	expect(isFinite(8)).to.be.true;
 
 	// false
 	expect(isFinite([])).to.be.false;

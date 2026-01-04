@@ -20,6 +20,12 @@ it('isBooleanLike(x)', function () {
 	expect(isBooleanLike(42)).to.be.false;
 	expect(isBooleanLike(new Object(42))).to.be.false;
 	expect(isBooleanLike('42')).to.be.false;
+	expect(isBooleanLike(-42)).to.be.false;
+	expect(isBooleanLike(-8)).to.be.false;
+	expect(isBooleanLike(-3.14)).to.be.false;
+	expect(isBooleanLike(0)).to.be.false;
+	expect(isBooleanLike(3.14)).to.be.false;
+	expect(isBooleanLike(8)).to.be.false;
 	expect(isBooleanLike(9_007_199_254_740_991n)).to.be.false;
 	expect(isBooleanLike(new Object(9_007_199_254_740_991n))).to.be.false;
 	expect(isBooleanLike(Infinity)).to.be.false;

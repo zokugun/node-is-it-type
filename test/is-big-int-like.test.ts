@@ -22,6 +22,12 @@ it('isBigIntLike(x)', function () {
 	expect(isBigIntLike(42)).to.be.false;
 	expect(isBigIntLike(new Object(42))).to.be.false;
 	expect(isBigIntLike('42')).to.be.false;
+	expect(isBigIntLike(-42)).to.be.false;
+	expect(isBigIntLike(-8)).to.be.false;
+	expect(isBigIntLike(-3.14)).to.be.false;
+	expect(isBigIntLike(0)).to.be.false;
+	expect(isBigIntLike(3.14)).to.be.false;
+	expect(isBigIntLike(8)).to.be.false;
 	expect(isBigIntLike(Infinity)).to.be.false;
 	expect(isBigIntLike(Number.NaN)).to.be.false;
 	expect(isBigIntLike({})).to.be.false;

@@ -20,6 +20,12 @@ it('isNonEmptyString(x)', function () {
 	expect(isNonEmptyString(new Object('hello world'))).to.be.false;
 	expect(isNonEmptyString(42)).to.be.false;
 	expect(isNonEmptyString(new Object(42))).to.be.false;
+	expect(isNonEmptyString(-42)).to.be.false;
+	expect(isNonEmptyString(-8)).to.be.false;
+	expect(isNonEmptyString(-3.14)).to.be.false;
+	expect(isNonEmptyString(0)).to.be.false;
+	expect(isNonEmptyString(3.14)).to.be.false;
+	expect(isNonEmptyString(8)).to.be.false;
 	expect(isNonEmptyString(9_007_199_254_740_991n)).to.be.false;
 	expect(isNonEmptyString(new Object(9_007_199_254_740_991n))).to.be.false;
 	expect(isNonEmptyString(Infinity)).to.be.false;

@@ -20,6 +20,12 @@ it('isStringLike(x)', function () {
 	expect(isStringLike(new Object(true))).to.be.false;
 	expect(isStringLike(42)).to.be.false;
 	expect(isStringLike(new Object(42))).to.be.false;
+	expect(isStringLike(-42)).to.be.false;
+	expect(isStringLike(-8)).to.be.false;
+	expect(isStringLike(-3.14)).to.be.false;
+	expect(isStringLike(0)).to.be.false;
+	expect(isStringLike(3.14)).to.be.false;
+	expect(isStringLike(8)).to.be.false;
 	expect(isStringLike(9_007_199_254_740_991n)).to.be.false;
 	expect(isStringLike(new Object(9_007_199_254_740_991n))).to.be.false;
 	expect(isStringLike(Infinity)).to.be.false;

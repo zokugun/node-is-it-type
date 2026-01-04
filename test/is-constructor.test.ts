@@ -26,6 +26,12 @@ it('isConstructor(x)', function () {
 	expect(isConstructor(42)).to.be.false;
 	expect(isConstructor(new Object(42))).to.be.false;
 	expect(isConstructor('42')).to.be.false;
+	expect(isConstructor(-42)).to.be.false;
+	expect(isConstructor(-8)).to.be.false;
+	expect(isConstructor(-3.14)).to.be.false;
+	expect(isConstructor(0)).to.be.false;
+	expect(isConstructor(3.14)).to.be.false;
+	expect(isConstructor(8)).to.be.false;
 	expect(isConstructor(9_007_199_254_740_991n)).to.be.false;
 	expect(isConstructor(new Object(9_007_199_254_740_991n))).to.be.false;
 	expect(isConstructor(Infinity)).to.be.false;

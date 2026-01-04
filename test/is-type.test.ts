@@ -18,6 +18,12 @@ it('isType(x)', function () {
 	expect(isType(42, Types.Number)).to.be.true;
 	expect(isType(new Object(42), Types.Object)).to.be.true;
 	expect(isType('42', Types.String)).to.be.true;
+	expect(isType(-42, Types.Number)).to.be.true;
+	expect(isType(-8, Types.Number)).to.be.true;
+	expect(isType(-3.14, Types.Number)).to.be.true;
+	expect(isType(0, Types.Number)).to.be.true;
+	expect(isType(3.14, Types.Number)).to.be.true;
+	expect(isType(8, Types.Number)).to.be.true;
 	expect(isType(9_007_199_254_740_991n, Types.BigInt)).to.be.true;
 	expect(isType(new Object(9_007_199_254_740_991n), Types.Object)).to.be.true;
 	expect(isType(Infinity, Types.Number)).to.be.true;

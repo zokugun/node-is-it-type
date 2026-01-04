@@ -23,6 +23,12 @@ it('isGenerator(x)', function () {
 	expect(isGenerator(42)).to.be.false;
 	expect(isGenerator(new Object(42))).to.be.false;
 	expect(isGenerator('42')).to.be.false;
+	expect(isGenerator(-42)).to.be.false;
+	expect(isGenerator(-8)).to.be.false;
+	expect(isGenerator(-3.14)).to.be.false;
+	expect(isGenerator(0)).to.be.false;
+	expect(isGenerator(3.14)).to.be.false;
+	expect(isGenerator(8)).to.be.false;
 	expect(isGenerator(9_007_199_254_740_991n)).to.be.false;
 	expect(isGenerator(new Object(9_007_199_254_740_991n))).to.be.false;
 	expect(isGenerator(Infinity)).to.be.false;

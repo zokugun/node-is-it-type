@@ -20,6 +20,12 @@ it('isBoxedNumber(x)', function () {
 	expect(isBoxedNumber(new Object('hello world'))).to.be.false;
 	expect(isBoxedNumber(42)).to.be.false;
 	expect(isBoxedNumber('42')).to.be.false;
+	expect(isBoxedNumber(-42)).to.be.false;
+	expect(isBoxedNumber(-8)).to.be.false;
+	expect(isBoxedNumber(-3.14)).to.be.false;
+	expect(isBoxedNumber(0)).to.be.false;
+	expect(isBoxedNumber(3.14)).to.be.false;
+	expect(isBoxedNumber(8)).to.be.false;
 	expect(isBoxedNumber(9_007_199_254_740_991n)).to.be.false;
 	expect(isBoxedNumber(new Object(9_007_199_254_740_991n))).to.be.false;
 	expect(isBoxedNumber(Infinity)).to.be.false;

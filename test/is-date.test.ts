@@ -21,6 +21,12 @@ it('isDate(x)', function () {
 	expect(isDate(42)).to.be.false;
 	expect(isDate(new Object(42))).to.be.false;
 	expect(isDate('42')).to.be.false;
+	expect(isDate(-42)).to.be.false;
+	expect(isDate(-8)).to.be.false;
+	expect(isDate(-3.14)).to.be.false;
+	expect(isDate(0)).to.be.false;
+	expect(isDate(3.14)).to.be.false;
+	expect(isDate(8)).to.be.false;
 	expect(isDate(9_007_199_254_740_991n)).to.be.false;
 	expect(isDate(new Object(9_007_199_254_740_991n))).to.be.false;
 	expect(isDate(Infinity)).to.be.false;

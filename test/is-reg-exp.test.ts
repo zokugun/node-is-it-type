@@ -21,6 +21,12 @@ it('isRegExp(x)', function () {
 	expect(isRegExp(42)).to.be.false;
 	expect(isRegExp(new Object(42))).to.be.false;
 	expect(isRegExp('42')).to.be.false;
+	expect(isRegExp(-42)).to.be.false;
+	expect(isRegExp(-8)).to.be.false;
+	expect(isRegExp(-3.14)).to.be.false;
+	expect(isRegExp(0)).to.be.false;
+	expect(isRegExp(3.14)).to.be.false;
+	expect(isRegExp(8)).to.be.false;
 	expect(isRegExp(9_007_199_254_740_991n)).to.be.false;
 	expect(isRegExp(new Object(9_007_199_254_740_991n))).to.be.false;
 	expect(isRegExp(Infinity)).to.be.false;

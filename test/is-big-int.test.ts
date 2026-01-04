@@ -21,6 +21,12 @@ it('isBigInt(x)', function () {
 	expect(isBigInt(42)).to.be.false;
 	expect(isBigInt(new Object(42))).to.be.false;
 	expect(isBigInt('42')).to.be.false;
+	expect(isBigInt(-42)).to.be.false;
+	expect(isBigInt(-8)).to.be.false;
+	expect(isBigInt(-3.14)).to.be.false;
+	expect(isBigInt(0)).to.be.false;
+	expect(isBigInt(3.14)).to.be.false;
+	expect(isBigInt(8)).to.be.false;
 	expect(isBigInt(new Object(9_007_199_254_740_991n))).to.be.false;
 	expect(isBigInt(Infinity)).to.be.false;
 	expect(isBigInt(Number.NaN)).to.be.false;

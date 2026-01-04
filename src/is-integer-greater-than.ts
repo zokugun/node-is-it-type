@@ -1,0 +1,3 @@
+export function isIntegerGreaterThan(item: unknown, to: number): boolean {
+	return Number.isInteger(item) && (item as number) > to;
+}

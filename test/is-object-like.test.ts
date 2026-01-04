@@ -55,6 +55,12 @@ it('isObjectLike(x)', function () {
 	expect(isObjectLike('hello world')).to.be.false;
 	expect(isObjectLike(42)).to.be.false;
 	expect(isObjectLike('42')).to.be.false;
+	expect(isObjectLike(-42)).to.be.false;
+	expect(isObjectLike(-8)).to.be.false;
+	expect(isObjectLike(-3.14)).to.be.false;
+	expect(isObjectLike(0)).to.be.false;
+	expect(isObjectLike(3.14)).to.be.false;
+	expect(isObjectLike(8)).to.be.false;
 	expect(isObjectLike(9_007_199_254_740_991n)).to.be.false;
 	expect(isObjectLike(Infinity)).to.be.false;
 	expect(isObjectLike(Number.NaN)).to.be.false;

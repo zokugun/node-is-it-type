@@ -6,6 +6,12 @@ it('isNumber(x)', function () {
 	expect(isNumber(42)).to.be.true;
 	expect(isNumber(Infinity)).to.be.true;
 	expect(isNumber(Number.NaN)).to.be.true;
+	expect(isNumber(-42)).to.be.true;
+	expect(isNumber(-8)).to.be.true;
+	expect(isNumber(-3.14)).to.be.true;
+	expect(isNumber(0)).to.be.true;
+	expect(isNumber(3.14)).to.be.true;
+	expect(isNumber(8)).to.be.true;
 
 	// false
 	expect(isNumber([])).to.be.false;

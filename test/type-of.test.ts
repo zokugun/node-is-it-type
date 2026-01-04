@@ -18,6 +18,12 @@ it('typeOf(x)', function () {
 	expect(typeOf(42)).to.equals(Types.Number);
 	expect(typeOf(new Object(42))).to.equals(Types.Object);
 	expect(typeOf('42')).to.equals(Types.String);
+	expect(typeOf(-42)).to.equals(Types.Number);
+	expect(typeOf(-8)).to.equals(Types.Number);
+	expect(typeOf(-3.14)).to.equals(Types.Number);
+	expect(typeOf(0)).to.equals(Types.Number);
+	expect(typeOf(3.14)).to.equals(Types.Number);
+	expect(typeOf(8)).to.equals(Types.Number);
 	expect(typeOf(9_007_199_254_740_991n)).to.equals(Types.BigInt);
 	expect(typeOf(new Object(9_007_199_254_740_991n))).to.equals(Types.Object);
 	expect(typeOf(Infinity)).to.equals(Types.Number);

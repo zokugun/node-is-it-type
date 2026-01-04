@@ -20,6 +20,12 @@ it('isBoolean(x)', function () {
 	expect(isBoolean(42)).to.be.false;
 	expect(isBoolean(new Object(42))).to.be.false;
 	expect(isBoolean('42')).to.be.false;
+	expect(isBoolean(-42)).to.be.false;
+	expect(isBoolean(-8)).to.be.false;
+	expect(isBoolean(-3.14)).to.be.false;
+	expect(isBoolean(0)).to.be.false;
+	expect(isBoolean(3.14)).to.be.false;
+	expect(isBoolean(8)).to.be.false;
 	expect(isBoolean(9_007_199_254_740_991n)).to.be.false;
 	expect(isBoolean(new Object(9_007_199_254_740_991n))).to.be.false;
 	expect(isBoolean(Infinity)).to.be.false;

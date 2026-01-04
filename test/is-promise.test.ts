@@ -23,6 +23,12 @@ it('isPromise(x)', function () {
 	expect(isPromise(42)).to.be.false;
 	expect(isPromise(new Object(42))).to.be.false;
 	expect(isPromise('42')).to.be.false;
+	expect(isPromise(-42)).to.be.false;
+	expect(isPromise(-8)).to.be.false;
+	expect(isPromise(-3.14)).to.be.false;
+	expect(isPromise(0)).to.be.false;
+	expect(isPromise(3.14)).to.be.false;
+	expect(isPromise(8)).to.be.false;
 	expect(isPromise(9_007_199_254_740_991n)).to.be.false;
 	expect(isPromise(new Object(9_007_199_254_740_991n))).to.be.false;
 	expect(isPromise(Infinity)).to.be.false;

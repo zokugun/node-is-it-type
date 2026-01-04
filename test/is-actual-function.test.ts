@@ -31,6 +31,12 @@ it('isActualFunction(x)', function () {
 	expect(isActualFunction(42)).to.be.false;
 	expect(isActualFunction(new Object(42))).to.be.false;
 	expect(isActualFunction('42')).to.be.false;
+	expect(isActualFunction(-42)).to.be.false;
+	expect(isActualFunction(-8)).to.be.false;
+	expect(isActualFunction(-3.14)).to.be.false;
+	expect(isActualFunction(0)).to.be.false;
+	expect(isActualFunction(3.14)).to.be.false;
+	expect(isActualFunction(8)).to.be.false;
 	expect(isActualFunction(9_007_199_254_740_991n)).to.be.false;
 	expect(isActualFunction(new Object(9_007_199_254_740_991n))).to.be.false;
 	expect(isActualFunction(Infinity)).to.be.false;

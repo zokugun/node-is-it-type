@@ -9,6 +9,12 @@ it('isPrimitive(x)', function () {
 	expect(isPrimitive('hello world')).to.be.true;
 	expect(isPrimitive(42)).to.be.true;
 	expect(isPrimitive('42')).to.be.true;
+	expect(isPrimitive(-42)).to.be.true;
+	expect(isPrimitive(-8)).to.be.true;
+	expect(isPrimitive(-3.14)).to.be.true;
+	expect(isPrimitive(0)).to.be.true;
+	expect(isPrimitive(3.14)).to.be.true;
+	expect(isPrimitive(8)).to.be.true;
 	expect(isPrimitive(9_007_199_254_740_991n)).to.be.true;
 	expect(isPrimitive(Infinity)).to.be.true;
 	expect(isPrimitive(Number.NaN)).to.be.true;

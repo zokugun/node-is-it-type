@@ -21,6 +21,12 @@ it('isAsyncFunction(x)', function () {
 	expect(isAsyncFunction(42)).to.be.false;
 	expect(isAsyncFunction(new Object(42))).to.be.false;
 	expect(isAsyncFunction('42')).to.be.false;
+	expect(isAsyncFunction(-42)).to.be.false;
+	expect(isAsyncFunction(-8)).to.be.false;
+	expect(isAsyncFunction(-3.14)).to.be.false;
+	expect(isAsyncFunction(0)).to.be.false;
+	expect(isAsyncFunction(3.14)).to.be.false;
+	expect(isAsyncFunction(8)).to.be.false;
 	expect(isAsyncFunction(9_007_199_254_740_991n)).to.be.false;
 	expect(isAsyncFunction(BigInt(9_007_199_254_740_991n))).to.be.false;
 	expect(isAsyncFunction({})).to.be.false;

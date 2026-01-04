@@ -20,6 +20,12 @@ it('isArray(x)', function () {
 	expect(isArray(42)).to.be.false;
 	expect(isArray(new Object(42))).to.be.false;
 	expect(isArray('42')).to.be.false;
+	expect(isArray(-42)).to.be.false;
+	expect(isArray(-8)).to.be.false;
+	expect(isArray(-3.14)).to.be.false;
+	expect(isArray(0)).to.be.false;
+	expect(isArray(3.14)).to.be.false;
+	expect(isArray(8)).to.be.false;
 	expect(isArray(9_007_199_254_740_991n)).to.be.false;
 	expect(isArray(BigInt(9_007_199_254_740_991n))).to.be.false;
 	expect(isArray({})).to.be.false;

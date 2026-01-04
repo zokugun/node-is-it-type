@@ -20,6 +20,12 @@ it('isEmptyString(x)', function () {
 	expect(isEmptyString(42)).to.be.false;
 	expect(isEmptyString(new Object(42))).to.be.false;
 	expect(isEmptyString('42')).to.be.false;
+	expect(isEmptyString(-42)).to.be.false;
+	expect(isEmptyString(-8)).to.be.false;
+	expect(isEmptyString(-3.14)).to.be.false;
+	expect(isEmptyString(0)).to.be.false;
+	expect(isEmptyString(3.14)).to.be.false;
+	expect(isEmptyString(8)).to.be.false;
 	expect(isEmptyString(9_007_199_254_740_991n)).to.be.false;
 	expect(isEmptyString(new Object(9_007_199_254_740_991n))).to.be.false;
 	expect(isEmptyString(Infinity)).to.be.false;

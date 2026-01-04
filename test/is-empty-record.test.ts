@@ -21,6 +21,12 @@ it('isEmptyRecord(x)', function () {
 	expect(isEmptyRecord(42)).to.be.false;
 	expect(isEmptyRecord(new Object(42))).to.be.false;
 	expect(isEmptyRecord('42')).to.be.false;
+	expect(isEmptyRecord(-42)).to.be.false;
+	expect(isEmptyRecord(-8)).to.be.false;
+	expect(isEmptyRecord(-3.14)).to.be.false;
+	expect(isEmptyRecord(0)).to.be.false;
+	expect(isEmptyRecord(3.14)).to.be.false;
+	expect(isEmptyRecord(8)).to.be.false;
 	expect(isEmptyRecord(9_007_199_254_740_991n)).to.be.false;
 	expect(isEmptyRecord(new Object(9_007_199_254_740_991n))).to.be.false;
 	expect(isEmptyRecord(Infinity)).to.be.false;
