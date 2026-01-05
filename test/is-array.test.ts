@@ -55,9 +55,20 @@ it('isArray(x)', function () {
 	expect(isArray(Date)).to.be.false;
 	expect(isArray(() => 0)).to.be.false;
 	expect(isArray(async () => 0)).to.be.false;
+	expect(isArray((async () => 0)())).to.be.false;
+	expect(isArray({ then: () => 0 })).to.be.false;
 	expect(isArray(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isArray((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isArray(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isArray((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isArray(new Error('error'))).to.be.false;
 	expect(isArray(new Promise((resolve) => {
 		resolve(0);
@@ -108,6 +119,8 @@ it('isArray(x, test)', function () {
 	expect(isArray(Date, isNumber)).to.be.false;
 	expect(isArray(() => 0, isNumber)).to.be.false;
 	expect(isArray(async () => 0, isNumber)).to.be.false;
+	expect(isArray((async () => 0)(), isNumber)).to.be.false;
+	expect(isArray({ then: () => 0 }, isNumber)).to.be.false;
 	expect(isArray(new Error('error'), isNumber)).to.be.false;
 	expect(isArray(new Promise((resolve) => {
 		resolve(0);

@@ -52,9 +52,20 @@ it('isConstructor(x)', function () {
 	expect(isConstructor(new Date())).to.be.false;
 	expect(isConstructor(() => 0)).to.be.false;
 	expect(isConstructor(async () => 0)).to.be.false;
+	expect(isConstructor((async () => 0)())).to.be.false;
+	expect(isConstructor({ then: () => 0 })).to.be.false;
 	expect(isConstructor(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isConstructor((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isConstructor(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isConstructor((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isConstructor(new Error('error'))).to.be.false;
 	expect(isConstructor(new Promise((resolve) => {
 		resolve(0);

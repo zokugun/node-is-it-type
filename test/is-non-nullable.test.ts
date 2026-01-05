@@ -53,9 +53,20 @@ it('isNonNullable(x)', function () {
 	expect(isNonNullable(Date)).to.be.true;
 	expect(isNonNullable(() => 0)).to.be.true;
 	expect(isNonNullable(async () => 0)).to.be.true;
+	expect(isNonNullable((async () => 0)())).to.be.true;
+	expect(isNonNullable({ then: () => 0 })).to.be.true;
 	expect(isNonNullable(function * () {
 		yield 0;
 	})).to.be.true;
+	expect(isNonNullable((function * () {
+		yield 0;
+	})())).to.be.true;
+	expect(isNonNullable(async function * () {
+		yield 0;
+	})).to.be.true;
+	expect(isNonNullable((async function * () {
+		yield 0;
+	})())).to.be.true;
 	expect(isNonNullable(new Error('error'))).to.be.true;
 	expect(isNonNullable(new Promise((resolve) => {
 		resolve(0);

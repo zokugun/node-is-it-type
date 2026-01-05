@@ -57,9 +57,20 @@ it('isBigIntLike(x)', function () {
 	expect(isBigIntLike(Date)).to.be.false;
 	expect(isBigIntLike(() => 0)).to.be.false;
 	expect(isBigIntLike(async () => 0)).to.be.false;
+	expect(isBigIntLike((async () => 0)())).to.be.false;
+	expect(isBigIntLike({ then: () => 0 })).to.be.false;
 	expect(isBigIntLike(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isBigIntLike((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isBigIntLike(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isBigIntLike((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isBigIntLike(new Error('error'))).to.be.false;
 	expect(isBigIntLike(new Promise((resolve) => {
 		resolve(0);

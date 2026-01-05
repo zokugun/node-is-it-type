@@ -57,9 +57,20 @@ it('isBooleanLike(x)', function () {
 	expect(isBooleanLike(Date)).to.be.false;
 	expect(isBooleanLike(() => 0)).to.be.false;
 	expect(isBooleanLike(async () => 0)).to.be.false;
+	expect(isBooleanLike((async () => 0)())).to.be.false;
+	expect(isBooleanLike({ then: () => 0 })).to.be.false;
 	expect(isBooleanLike(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isBooleanLike((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isBooleanLike(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isBooleanLike((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isBooleanLike(new Error('error'))).to.be.false;
 	expect(isBooleanLike(new Promise((resolve) => {
 		resolve(0);

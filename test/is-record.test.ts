@@ -15,6 +15,7 @@ it('isRecord(x)', function () {
 		c: 1,
 	})).to.be.true;
 	expect(isRecord(globalThis)).to.be.true;
+	expect(isRecord({ then: () => 0 })).to.be.true;
 
 	// false
 	expect(isRecord([])).to.be.false;
@@ -57,9 +58,19 @@ it('isRecord(x)', function () {
 	expect(isRecord(Date)).to.be.false;
 	expect(isRecord(() => 0)).to.be.false;
 	expect(isRecord(async () => 0)).to.be.false;
+	expect(isRecord((async () => 0)())).to.be.false;
 	expect(isRecord(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isRecord((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isRecord(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isRecord((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isRecord(new Error('error'))).to.be.false;
 	expect(isRecord(new Promise((resolve) => {
 		resolve(0);

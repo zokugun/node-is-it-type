@@ -57,9 +57,20 @@ it('isNodeError(x)', function () {
 	expect(isNodeError(Date)).to.be.false;
 	expect(isNodeError(() => 0)).to.be.false;
 	expect(isNodeError(async () => 0)).to.be.false;
+	expect(isNodeError((async () => 0)())).to.be.false;
+	expect(isNodeError({ then: () => 0 })).to.be.false;
 	expect(isNodeError(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isNodeError((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isNodeError(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isNodeError((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isNodeError(new Error('error'))).to.be.false;
 	expect(isNodeError(new Promise((resolve) => {
 		resolve(0);

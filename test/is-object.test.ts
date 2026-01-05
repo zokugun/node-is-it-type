@@ -31,6 +31,14 @@ it('isObject(x)', function () {
 	expect(isObject(new Promise((resolve) => {
 		resolve(0);
 	}))).to.be.true;
+	expect(isObject((async () => 0)())).to.be.true;
+	expect(isObject({ then: () => 0 })).to.be.true;
+	expect(isObject((function * () {
+		yield 0;
+	})())).to.be.true;
+	expect(isObject((async function * () {
+		yield 0;
+	})())).to.be.true;
 
 	// false
 	expect(isObject([])).to.be.false;
@@ -62,6 +70,9 @@ it('isObject(x)', function () {
 	expect(isObject(() => 0)).to.be.false;
 	expect(isObject(async () => 0)).to.be.false;
 	expect(isObject(function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isObject(async function * () {
 		yield 0;
 	})).to.be.false;
 	expect(isObject(Symbol(0))).to.be.false;

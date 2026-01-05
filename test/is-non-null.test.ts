@@ -54,9 +54,20 @@ it('isNonNull(x)', function () {
 	expect(isNonNull(Date)).to.be.true;
 	expect(isNonNull(() => 0)).to.be.true;
 	expect(isNonNull(async () => 0)).to.be.true;
+	expect(isNonNull((async () => 0)())).to.be.true;
+	expect(isNonNull({ then: () => 0 })).to.be.true;
 	expect(isNonNull(function * () {
 		yield 0;
 	})).to.be.true;
+	expect(isNonNull((function * () {
+		yield 0;
+	})())).to.be.true;
+	expect(isNonNull(async function * () {
+		yield 0;
+	})).to.be.true;
+	expect(isNonNull((async function * () {
+		yield 0;
+	})())).to.be.true;
 	expect(isNonNull(new Error('error'))).to.be.true;
 	expect(isNonNull(new Promise((resolve) => {
 		resolve(0);

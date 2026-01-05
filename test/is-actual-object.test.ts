@@ -30,6 +30,14 @@ it('isActualObject(x)', function () {
 	})())).to.be.true;
 	expect(isActualObject(/hello/)).to.be.true;
 	expect(isActualObject(new Date())).to.be.true;
+	expect(isActualObject((async () => 0)())).to.be.true;
+	expect(isActualObject({ then: () => 0 })).to.be.true;
+	expect(isActualObject((function * () {
+		yield 0;
+	})())).to.be.true;
+	expect(isActualObject((async function * () {
+		yield 0;
+	})())).to.be.true;
 	expect(isActualObject(new Error('error'))).to.be.true;
 	expect(isActualObject(new Promise((resolve) => {
 		resolve(0);
@@ -62,6 +70,9 @@ it('isActualObject(x)', function () {
 	expect(isActualObject(() => 0)).to.be.false;
 	expect(isActualObject(async () => 0)).to.be.false;
 	expect(isActualObject(function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isActualObject(async function * () {
 		yield 0;
 	})).to.be.false;
 	expect(isActualObject(Symbol(0))).to.be.false;

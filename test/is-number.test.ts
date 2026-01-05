@@ -57,9 +57,20 @@ it('isNumber(x)', function () {
 	expect(isNumber(Date)).to.be.false;
 	expect(isNumber(() => 0)).to.be.false;
 	expect(isNumber(async () => 0)).to.be.false;
+	expect(isNumber((async () => 0)())).to.be.false;
+	expect(isNumber({ then: () => 0 })).to.be.false;
 	expect(isNumber(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isNumber((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isNumber(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isNumber((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isNumber(new Error('error'))).to.be.false;
 	expect(isNumber(new Promise((resolve) => {
 		resolve(0);

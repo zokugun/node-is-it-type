@@ -57,9 +57,20 @@ it('isBoxedBigInt(x)', function () {
 	expect(isBoxedBigInt(Date)).to.be.false;
 	expect(isBoxedBigInt(() => 0)).to.be.false;
 	expect(isBoxedBigInt(async () => 0)).to.be.false;
+	expect(isBoxedBigInt((async () => 0)())).to.be.false;
+	expect(isBoxedBigInt({ then: () => 0 })).to.be.false;
 	expect(isBoxedBigInt(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isBoxedBigInt((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isBoxedBigInt(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isBoxedBigInt((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isBoxedBigInt(new Error('error'))).to.be.false;
 	expect(isBoxedBigInt(new Promise((resolve) => {
 		resolve(0);

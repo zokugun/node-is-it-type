@@ -57,9 +57,20 @@ it('isDate(x)', function () {
 	expect(isDate(Date)).to.be.false;
 	expect(isDate(() => 0)).to.be.false;
 	expect(isDate(async () => 0)).to.be.false;
+	expect(isDate((async () => 0)())).to.be.false;
+	expect(isDate({ then: () => 0 })).to.be.false;
 	expect(isDate(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isDate((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isDate(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isDate((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isDate(new Error('error'))).to.be.false;
 	expect(isDate(new Promise((resolve) => {
 		resolve(0);

@@ -42,9 +42,20 @@ it('isObjectLike(x)', function () {
 	}))).to.be.true;
 	expect(isObjectLike(() => 0)).to.be.true;
 	expect(isObjectLike(async () => 0)).to.be.true;
+	expect(isObjectLike((async () => 0)())).to.be.true;
+	expect(isObjectLike({ then: () => 0 })).to.be.true;
 	expect(isObjectLike(function * () {
 		yield 0;
 	})).to.be.true;
+	expect(isObjectLike((function * () {
+		yield 0;
+	})())).to.be.true;
+	expect(isObjectLike(async function * () {
+		yield 0;
+	})).to.be.true;
+	expect(isObjectLike((async function * () {
+		yield 0;
+	})())).to.be.true;
 
 	// false
 	expect(isObjectLike(null)).to.be.false;

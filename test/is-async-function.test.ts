@@ -6,11 +6,11 @@ it('isAsyncFunction(x)', function () {
 	expect(isAsyncFunction(async () => 0)).to.be.true;
 
 	// false
+	expect(isAsyncFunction(null)).to.be.false;
 	expect(isAsyncFunction([])).to.be.false;
 	expect(isAsyncFunction([1, 2, 3])).to.be.false;
 	expect(isAsyncFunction([1, 2, '3'])).to.be.false;
 	expect(isAsyncFunction(arguments)).to.be.false;
-	expect(isAsyncFunction(null)).to.be.false;
 	expect(isAsyncFunction(undefined)).to.be.false;
 	expect(isAsyncFunction(false)).to.be.false;
 	expect(isAsyncFunction(new Object(true))).to.be.false;
@@ -28,7 +28,9 @@ it('isAsyncFunction(x)', function () {
 	expect(isAsyncFunction(3.14)).to.be.false;
 	expect(isAsyncFunction(8)).to.be.false;
 	expect(isAsyncFunction(9_007_199_254_740_991n)).to.be.false;
-	expect(isAsyncFunction(BigInt(9_007_199_254_740_991n))).to.be.false;
+	expect(isAsyncFunction(new Object(9_007_199_254_740_991n))).to.be.false;
+	expect(isAsyncFunction(Infinity)).to.be.false;
+	expect(isAsyncFunction(Number.NaN)).to.be.false;
 	expect(isAsyncFunction({})).to.be.false;
 	expect(isAsyncFunction({
 		a: 'hello',
@@ -55,6 +57,20 @@ it('isAsyncFunction(x)', function () {
 	expect(isAsyncFunction(new Date())).to.be.false;
 	expect(isAsyncFunction(Date)).to.be.false;
 	expect(isAsyncFunction(() => 0)).to.be.false;
+	expect(isAsyncFunction((async () => 0)())).to.be.false;
+	expect(isAsyncFunction({ then: () => 0 })).to.be.false;
+	expect(isAsyncFunction(function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isAsyncFunction((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isAsyncFunction(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isAsyncFunction((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isAsyncFunction(new Error('error'))).to.be.false;
 	expect(isAsyncFunction(new Promise((resolve) => {
 		resolve(0);

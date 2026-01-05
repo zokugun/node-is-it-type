@@ -57,9 +57,20 @@ it('isNaN(x)', function () {
 	expect(isNaN(Date)).to.be.false;
 	expect(isNaN(() => 0)).to.be.false;
 	expect(isNaN(async () => 0)).to.be.false;
+	expect(isNaN((async () => 0)())).to.be.false;
+	expect(isNaN({ then: () => 0 })).to.be.false;
 	expect(isNaN(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isNaN((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isNaN(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isNaN((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isNaN(new Error('error'))).to.be.false;
 	expect(isNaN(new Promise((resolve) => {
 		resolve(0);

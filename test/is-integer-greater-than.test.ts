@@ -57,9 +57,20 @@ it('isIntegerGreaterThan(x)', function () {
 	expect(isIntegerGreaterThan(Date, 8)).to.be.false;
 	expect(isIntegerGreaterThan(() => 0, 8)).to.be.false;
 	expect(isIntegerGreaterThan(async () => 0, 8)).to.be.false;
+	expect(isIntegerGreaterThan((async () => 0)(), 8)).to.be.false;
+	expect(isIntegerGreaterThan({ then: () => 0 }, 8)).to.be.false;
 	expect(isIntegerGreaterThan(function * () {
 		yield 0;
 	}, 8)).to.be.false;
+	expect(isIntegerGreaterThan((function * () {
+		yield 0;
+	})(), 8)).to.be.false;
+	expect(isIntegerGreaterThan(async function * () {
+		yield 0;
+	}, 8)).to.be.false;
+	expect(isIntegerGreaterThan((async function * () {
+		yield 0;
+	})(), 8)).to.be.false;
 	expect(isIntegerGreaterThan(new Error('error'), 8)).to.be.false;
 	expect(isIntegerGreaterThan(new Promise((resolve) => {
 		resolve(0);

@@ -57,9 +57,20 @@ it('isEmptyArray(x)', function () {
 	expect(isEmptyArray(Date)).to.be.false;
 	expect(isEmptyArray(() => 0)).to.be.false;
 	expect(isEmptyArray(async () => 0)).to.be.false;
+	expect(isEmptyArray((async () => 0)())).to.be.false;
+	expect(isEmptyArray({ then: () => 0 })).to.be.false;
 	expect(isEmptyArray(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isEmptyArray((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isEmptyArray(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isEmptyArray((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isEmptyArray(new Error('error'))).to.be.false;
 	expect(isEmptyArray(new Promise((resolve) => {
 		resolve(0);

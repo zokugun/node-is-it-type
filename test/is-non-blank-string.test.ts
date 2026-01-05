@@ -57,9 +57,20 @@ it('isNonBlankString(x)', function () {
 	expect(isNonBlankString(Date)).to.be.false;
 	expect(isNonBlankString(() => 0)).to.be.false;
 	expect(isNonBlankString(async () => 0)).to.be.false;
+	expect(isNonBlankString((async () => 0)())).to.be.false;
+	expect(isNonBlankString({ then: () => 0 })).to.be.false;
 	expect(isNonBlankString(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isNonBlankString((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isNonBlankString(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isNonBlankString((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isNonBlankString(new Error('error'))).to.be.false;
 	expect(isNonBlankString(new Promise((resolve) => {
 		resolve(0);

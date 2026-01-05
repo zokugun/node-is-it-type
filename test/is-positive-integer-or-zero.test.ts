@@ -57,9 +57,20 @@ it('isPositiveIntegerOrZero(x)', function () {
 	expect(isPositiveIntegerOrZero(Date)).to.be.false;
 	expect(isPositiveIntegerOrZero(() => 0)).to.be.false;
 	expect(isPositiveIntegerOrZero(async () => 0)).to.be.false;
+	expect(isPositiveIntegerOrZero((async () => 0)())).to.be.false;
+	expect(isPositiveIntegerOrZero({ then: () => 0 })).to.be.false;
 	expect(isPositiveIntegerOrZero(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isPositiveIntegerOrZero((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isPositiveIntegerOrZero(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isPositiveIntegerOrZero((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isPositiveIntegerOrZero(new Error('error'))).to.be.false;
 	expect(isPositiveIntegerOrZero(new Promise((resolve) => {
 		resolve(0);

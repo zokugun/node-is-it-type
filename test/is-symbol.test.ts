@@ -58,9 +58,20 @@ it('isSymbol(x)', function () {
 	expect(isSymbol(Date)).to.be.false;
 	expect(isSymbol(() => 0)).to.be.false;
 	expect(isSymbol(async () => 0)).to.be.false;
+	expect(isSymbol((async () => 0)())).to.be.false;
+	expect(isSymbol({ then: () => 0 })).to.be.false;
 	expect(isSymbol(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isSymbol((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isSymbol(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isSymbol((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isSymbol(new Error('error'))).to.be.false;
 	expect(isSymbol(new Promise((resolve) => {
 		resolve(0);

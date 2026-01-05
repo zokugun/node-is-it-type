@@ -57,9 +57,20 @@ it('isPrimitive(x)', function () {
 	expect(isPrimitive(Date)).to.be.false;
 	expect(isPrimitive(() => 0)).to.be.false;
 	expect(isPrimitive(async () => 0)).to.be.false;
+	expect(isPrimitive((async () => 0)())).to.be.false;
+	expect(isPrimitive({ then: () => 0 })).to.be.false;
 	expect(isPrimitive(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isPrimitive((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isPrimitive(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isPrimitive((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isPrimitive(new Error('error'))).to.be.false;
 	expect(isPrimitive(new Promise((resolve) => {
 		resolve(0);

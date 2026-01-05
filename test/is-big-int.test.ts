@@ -57,9 +57,20 @@ it('isBigInt(x)', function () {
 	expect(isBigInt(Date)).to.be.false;
 	expect(isBigInt(() => 0)).to.be.false;
 	expect(isBigInt(async () => 0)).to.be.false;
+	expect(isBigInt((async () => 0)())).to.be.false;
+	expect(isBigInt({ then: () => 0 })).to.be.false;
 	expect(isBigInt(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isBigInt((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isBigInt(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isBigInt((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isBigInt(new Error('error'))).to.be.false;
 	expect(isBigInt(new Promise((resolve) => {
 		resolve(0);

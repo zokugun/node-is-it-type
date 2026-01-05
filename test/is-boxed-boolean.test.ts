@@ -57,9 +57,20 @@ it('isBoxedBoolean(x)', function () {
 	expect(isBoxedBoolean(Date)).to.be.false;
 	expect(isBoxedBoolean(() => 0)).to.be.false;
 	expect(isBoxedBoolean(async () => 0)).to.be.false;
+	expect(isBoxedBoolean((async () => 0)())).to.be.false;
+	expect(isBoxedBoolean({ then: () => 0 })).to.be.false;
 	expect(isBoxedBoolean(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isBoxedBoolean((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isBoxedBoolean(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isBoxedBoolean((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isBoxedBoolean(new Error('error'))).to.be.false;
 	expect(isBoxedBoolean(new Promise((resolve) => {
 		resolve(0);

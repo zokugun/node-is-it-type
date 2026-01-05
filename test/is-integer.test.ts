@@ -57,9 +57,20 @@ it('isInteger(x)', function () {
 	expect(isInteger(Date)).to.be.false;
 	expect(isInteger(() => 0)).to.be.false;
 	expect(isInteger(async () => 0)).to.be.false;
+	expect(isInteger((async () => 0)())).to.be.false;
+	expect(isInteger({ then: () => 0 })).to.be.false;
 	expect(isInteger(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isInteger((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isInteger(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isInteger((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isInteger(new Error('error'))).to.be.false;
 	expect(isInteger(new Promise((resolve) => {
 		resolve(0);

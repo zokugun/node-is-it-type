@@ -14,6 +14,7 @@ it('isNonEmptyRecord(x)', function () {
 		c: 1,
 	})).to.be.true;
 	expect(isNonEmptyRecord(globalThis)).to.be.true;
+	expect(isNonEmptyRecord({ then: () => 0 })).to.be.true;
 
 	// false
 	expect(isNonEmptyRecord([])).to.be.false;
@@ -57,9 +58,19 @@ it('isNonEmptyRecord(x)', function () {
 	expect(isNonEmptyRecord(Date)).to.be.false;
 	expect(isNonEmptyRecord(() => 0)).to.be.false;
 	expect(isNonEmptyRecord(async () => 0)).to.be.false;
+	expect(isNonEmptyRecord((async () => 0)())).to.be.false;
 	expect(isNonEmptyRecord(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isNonEmptyRecord((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isNonEmptyRecord(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isNonEmptyRecord((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isNonEmptyRecord(new Error('error'))).to.be.false;
 	expect(isNonEmptyRecord(new Promise((resolve) => {
 		resolve(0);

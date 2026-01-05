@@ -14,6 +14,9 @@ it('isActualFunction(x)', function () {
 	expect(isActualFunction(function * () {
 		yield 0;
 	})).to.be.true;
+	expect(isActualFunction(async function * () {
+		yield 0;
+	})).to.be.true;
 
 	// false
 	expect(isActualFunction([])).to.be.false;
@@ -60,6 +63,14 @@ it('isActualFunction(x)', function () {
 	})())).to.be.false;
 	expect(isActualFunction(/hello/)).to.be.false;
 	expect(isActualFunction(new Date())).to.be.false;
+	expect(isActualFunction((async () => 0)())).to.be.false;
+	expect(isActualFunction({ then: () => 0 })).to.be.false;
+	expect(isActualFunction((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isActualFunction((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isActualFunction(new Error('error'))).to.be.false;
 	expect(isActualFunction(new Promise((resolve) => {
 		resolve(0);

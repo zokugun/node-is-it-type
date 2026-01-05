@@ -57,9 +57,20 @@ it('isBoxedPrimitive(x)', function () {
 	expect(isBoxedPrimitive(Date)).to.be.false;
 	expect(isBoxedPrimitive(() => 0)).to.be.false;
 	expect(isBoxedPrimitive(async () => 0)).to.be.false;
+	expect(isBoxedPrimitive((async () => 0)())).to.be.false;
+	expect(isBoxedPrimitive({ then: () => 0 })).to.be.false;
 	expect(isBoxedPrimitive(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isBoxedPrimitive((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isBoxedPrimitive(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isBoxedPrimitive((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isBoxedPrimitive(new Error('error'))).to.be.false;
 	expect(isBoxedPrimitive(new Promise((resolve) => {
 		resolve(0);

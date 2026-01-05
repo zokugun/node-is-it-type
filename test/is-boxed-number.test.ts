@@ -57,9 +57,20 @@ it('isBoxedNumber(x)', function () {
 	expect(isBoxedNumber(Date)).to.be.false;
 	expect(isBoxedNumber(() => 0)).to.be.false;
 	expect(isBoxedNumber(async () => 0)).to.be.false;
+	expect(isBoxedNumber((async () => 0)())).to.be.false;
+	expect(isBoxedNumber({ then: () => 0 })).to.be.false;
 	expect(isBoxedNumber(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isBoxedNumber((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isBoxedNumber(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isBoxedNumber((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isBoxedNumber(new Error('error'))).to.be.false;
 	expect(isBoxedNumber(new Promise((resolve) => {
 		resolve(0);

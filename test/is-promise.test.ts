@@ -6,6 +6,7 @@ it('isPromise(x)', function () {
 	expect(isPromise(new Promise((resolve) => {
 		resolve(0);
 	}))).to.be.true;
+	expect(isPromise((async () => 0)())).to.be.true;
 
 	// false
 	expect(isPromise([])).to.be.false;
@@ -60,9 +61,19 @@ it('isPromise(x)', function () {
 	expect(isPromise(Date)).to.be.false;
 	expect(isPromise(() => 0)).to.be.false;
 	expect(isPromise(async () => 0)).to.be.false;
+	expect(isPromise({ then: () => 0 })).to.be.false;
 	expect(isPromise(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isPromise((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isPromise(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isPromise((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isPromise(new Error('error'))).to.be.false;
 	expect(isPromise(Symbol(0))).to.be.false;
 });

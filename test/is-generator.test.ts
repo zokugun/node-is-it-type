@@ -6,6 +6,9 @@ it('isGenerator(x)', function () {
 	expect(isGenerator(function * () {
 		yield 0;
 	})).to.be.true;
+	expect(isGenerator(async function * () {
+		yield 0;
+	})).to.be.true;
 
 	// false
 	expect(isGenerator([])).to.be.false;
@@ -60,6 +63,14 @@ it('isGenerator(x)', function () {
 	expect(isGenerator(Date)).to.be.false;
 	expect(isGenerator(() => 0)).to.be.false;
 	expect(isGenerator(async () => 0)).to.be.false;
+	expect(isGenerator((async () => 0)())).to.be.false;
+	expect(isGenerator({ then: () => 0 })).to.be.false;
+	expect(isGenerator((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isGenerator((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isGenerator(new Error('error'))).to.be.false;
 	expect(isGenerator(new Promise((resolve) => {
 		resolve(0);

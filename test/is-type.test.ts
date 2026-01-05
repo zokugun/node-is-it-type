@@ -55,9 +55,20 @@ it('isType(x)', function () {
 	expect(isType(Date, Types.Constructor)).to.be.true;
 	expect(isType(() => 0, Types.SyncFunction)).to.be.true;
 	expect(isType(async () => 0, Types.AsyncFunction)).to.be.true;
+	expect(isType((async () => 0)(), Types.Promise)).to.be.true;
+	expect(isType({ then: () => 0 }, Types.Record)).to.be.true;
 	expect(isType(function * () {
 		yield 0;
-	}, Types.Generator)).to.be.true;
+	}, Types.SyncGenerator)).to.be.true;
+	expect(isType((function * () {
+		yield 0;
+	})(), Types.Object)).to.be.true;
+	expect(isType(async function * () {
+		yield 0;
+	}, Types.AsyncGenerator)).to.be.true;
+	expect(isType((async function * () {
+		yield 0;
+	})(), Types.Object)).to.be.true;
 	expect(isType(new Error('error'), Types.Error)).to.be.true;
 	expect(isType(new Promise((resolve) => {
 		resolve(0);

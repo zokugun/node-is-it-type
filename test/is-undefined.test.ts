@@ -57,9 +57,20 @@ it('isUndefined(x)', function () {
 	expect(isUndefined(Date)).to.be.false;
 	expect(isUndefined(() => 0)).to.be.false;
 	expect(isUndefined(async () => 0)).to.be.false;
+	expect(isUndefined((async () => 0)())).to.be.false;
+	expect(isUndefined({ then: () => 0 })).to.be.false;
 	expect(isUndefined(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isUndefined((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isUndefined(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isUndefined((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isUndefined(new Error('error'))).to.be.false;
 	expect(isUndefined(new Promise((resolve) => {
 		resolve(0);

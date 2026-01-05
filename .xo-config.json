@@ -134,6 +134,7 @@
 		"unicorn/no-array-callback-reference": "off",
 		"unicorn/no-length-as-slice-end": "off",
 		"unicorn/no-object-as-default-parameter": "off",
+		"unicorn/no-thenable": "off",
 		"unicorn/prefer-json-parse-buffer": "off",
 		"unicorn/prefer-module": "off",
 		"unicorn/prefer-node-protocol": "off",

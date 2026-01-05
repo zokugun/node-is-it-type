@@ -6,5 +6,5 @@ export function isSyncFunction(item: unknown): item is SyncFunction {
 		return false;
 	}
 
-	return item.constructor.name !== 'AsyncFunction' && item.constructor.name !== 'GeneratorFunction';
+	return item.constructor.name !== 'AsyncFunction' && item.constructor.name !== 'GeneratorFunction' && item.constructor.name !== 'AsyncGeneratorFunction';
 }

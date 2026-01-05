@@ -8,6 +8,9 @@ it('isFunction(x)', function () {
 	expect(isFunction(function * () {
 		yield 0;
 	})).to.be.true;
+	expect(isFunction(async function * () {
+		yield 0;
+	})).to.be.true;
 
 	// false
 	expect(isFunction([])).to.be.false;
@@ -60,6 +63,14 @@ it('isFunction(x)', function () {
 	expect(isFunction(/hello/)).to.be.false;
 	expect(isFunction(new Date())).to.be.false;
 	expect(isFunction(Date)).to.be.false;
+	expect(isFunction((async () => 0)())).to.be.false;
+	expect(isFunction({ then: () => 0 })).to.be.false;
+	expect(isFunction((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isFunction((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isFunction(new Error('error'))).to.be.false;
 	expect(isFunction(new Promise((resolve) => {
 		resolve(0);

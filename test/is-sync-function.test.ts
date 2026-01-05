@@ -57,9 +57,20 @@ it('isSyncFunction(x)', function () {
 	expect(isSyncFunction(new Date())).to.be.false;
 	expect(isSyncFunction(Date)).to.be.false;
 	expect(isSyncFunction(async () => 0)).to.be.false;
+	expect(isSyncFunction((async () => 0)())).to.be.false;
+	expect(isSyncFunction({ then: () => 0 })).to.be.false;
 	expect(isSyncFunction(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isSyncFunction((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isSyncFunction(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isSyncFunction((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isSyncFunction(new Error('error'))).to.be.false;
 	expect(isSyncFunction(new Promise((resolve) => {
 		resolve(0);

@@ -57,9 +57,20 @@ it('isRegExp(x)', function () {
 	expect(isRegExp(Date)).to.be.false;
 	expect(isRegExp(() => 0)).to.be.false;
 	expect(isRegExp(async () => 0)).to.be.false;
+	expect(isRegExp((async () => 0)())).to.be.false;
+	expect(isRegExp({ then: () => 0 })).to.be.false;
 	expect(isRegExp(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isRegExp((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isRegExp(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isRegExp((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isRegExp(new Error('error'))).to.be.false;
 	expect(isRegExp(new Promise((resolve) => {
 		resolve(0);

@@ -57,9 +57,20 @@ it('isIntegerLessThan(x)', function () {
 	expect(isIntegerLessThan(Date, 8)).to.be.false;
 	expect(isIntegerLessThan(() => 0, 8)).to.be.false;
 	expect(isIntegerLessThan(async () => 0, 8)).to.be.false;
+	expect(isIntegerLessThan((async () => 0)(), 8)).to.be.false;
+	expect(isIntegerLessThan({ then: () => 0 }, 8)).to.be.false;
 	expect(isIntegerLessThan(function * () {
 		yield 0;
 	}, 8)).to.be.false;
+	expect(isIntegerLessThan((function * () {
+		yield 0;
+	})(), 8)).to.be.false;
+	expect(isIntegerLessThan(async function * () {
+		yield 0;
+	}, 8)).to.be.false;
+	expect(isIntegerLessThan((async function * () {
+		yield 0;
+	})(), 8)).to.be.false;
 	expect(isIntegerLessThan(new Error('error'), 8)).to.be.false;
 	expect(isIntegerLessThan(new Promise((resolve) => {
 		resolve(0);

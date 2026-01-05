@@ -57,9 +57,20 @@ it('isStringLike(x)', function () {
 	expect(isStringLike(Date)).to.be.false;
 	expect(isStringLike(() => 0)).to.be.false;
 	expect(isStringLike(async () => 0)).to.be.false;
+	expect(isStringLike((async () => 0)())).to.be.false;
+	expect(isStringLike({ then: () => 0 })).to.be.false;
 	expect(isStringLike(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isStringLike((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isStringLike(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isStringLike((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isStringLike(new Error('error'))).to.be.false;
 	expect(isStringLike(new Promise((resolve) => {
 		resolve(0);

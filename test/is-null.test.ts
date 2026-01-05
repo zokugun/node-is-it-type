@@ -57,9 +57,20 @@ it('isNull(x)', function () {
 	expect(isNull(Date)).to.be.false;
 	expect(isNull(() => 0)).to.be.false;
 	expect(isNull(async () => 0)).to.be.false;
+	expect(isNull((async () => 0)())).to.be.false;
+	expect(isNull({ then: () => 0 })).to.be.false;
 	expect(isNull(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isNull((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isNull(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isNull((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isNull(new Error('error'))).to.be.false;
 	expect(isNull(new Promise((resolve) => {
 		resolve(0);

@@ -57,9 +57,20 @@ it('isFinite(x)', function () {
 	expect(isFinite(Date)).to.be.false;
 	expect(isFinite(() => 0)).to.be.false;
 	expect(isFinite(async () => 0)).to.be.false;
+	expect(isFinite((async () => 0)())).to.be.false;
+	expect(isFinite({ then: () => 0 })).to.be.false;
 	expect(isFinite(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isFinite((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isFinite(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isFinite((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isFinite(new Error('error'))).to.be.false;
 	expect(isFinite(new Promise((resolve) => {
 		resolve(0);

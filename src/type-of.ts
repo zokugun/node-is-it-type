@@ -1,12 +1,13 @@
 import { isAsyncFunction } from './is-async-function.js';
+import { isAsyncGenerator } from './is-async-generator.js';
 import { isConstructor } from './is-constructor.js';
 import { isDate } from './is-date.js';
 import { isError } from './is-error.js';
-import { isGenerator } from './is-generator.js';
 import { isNodeError } from './is-node-error.js';
 import { isPromise } from './is-promise.js';
 import { isRecord } from './is-record.js';
 import { isRegExp } from './is-reg-exp.js';
+import { isSyncGenerator } from './is-sync-generator.js';
 import { type TypesLiteral } from './types.js';
 
 export function typeOf(item: unknown): TypesLiteral { // {{{
@@ -52,8 +53,11 @@ export function typeOf(item: unknown): TypesLiteral { // {{{
 		else if(isConstructor(item as Function)) {
 			return 'constructor';
 		}
-		else if(isGenerator(item)) {
-			return 'generator';
+		else if(isSyncGenerator(item)) {
+			return 'sync-generator';
+		}
+		else if(isAsyncGenerator(item)) {
+			return 'async-generator';
 		}
 		else {
 			return 'sync-function';

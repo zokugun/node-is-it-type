@@ -55,9 +55,20 @@ it('typeOf(x)', function () {
 	expect(typeOf(Date)).to.equals(Types.Constructor);
 	expect(typeOf(() => 0)).to.equals(Types.SyncFunction);
 	expect(typeOf(async () => 0)).to.equals(Types.AsyncFunction);
+	expect(typeOf((async () => 0)())).to.equals(Types.Promise);
+	expect(typeOf({ then: () => 0 })).to.equals(Types.Record);
 	expect(typeOf(function * () {
 		yield 0;
-	})).to.equals(Types.Generator);
+	})).to.equals(Types.SyncGenerator);
+	expect(typeOf((function * () {
+		yield 0;
+	})())).to.equals(Types.Object);
+	expect(typeOf(async function * () {
+		yield 0;
+	})).to.equals(Types.AsyncGenerator);
+	expect(typeOf((async function * () {
+		yield 0;
+	})())).to.equals(Types.Object);
 	expect(typeOf(new Error('error'))).to.equals(Types.Error);
 	expect(typeOf(new Promise((resolve) => {
 		resolve(0);

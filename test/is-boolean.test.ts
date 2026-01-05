@@ -57,9 +57,20 @@ it('isBoolean(x)', function () {
 	expect(isBoolean(Date)).to.be.false;
 	expect(isBoolean(() => 0)).to.be.false;
 	expect(isBoolean(async () => 0)).to.be.false;
+	expect(isBoolean((async () => 0)())).to.be.false;
+	expect(isBoolean({ then: () => 0 })).to.be.false;
 	expect(isBoolean(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isBoolean((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isBoolean(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isBoolean((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isBoolean(new Error('error'))).to.be.false;
 	expect(isBoolean(new Promise((resolve) => {
 		resolve(0);

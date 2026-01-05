@@ -83,66 +83,77 @@ if(isType(value, 'date')) {
 Quick Reference
 ---------------
 
-| Predicate                 | What it checks                                                                                       |
-| ------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `isActualFunction`        | Raw `typeof value === 'function'` check (constructors/classes pass).                                 |
-| `isActualObject`          | Non-null values whose `typeof` is `'object'` (arrays included).                                      |
-| `isArray`                 | `Array.isArray` plus an optional per-element predicate.                                              |
-| `isArrayLike`             | Objects exposing `Symbol.iterator`, so they behave like iterables.                                   |
-| `isAsyncFunction`         | Functions whose constructor name is `AsyncFunction`.                                                 |
-| `isBigInt`                | Primitive `bigint` values.                                                                           |
-| `isBigIntLike`            | Primitive bigint or boxed `BigInt` objects.                                                          |
-| `isBlankString`           | Strings that become empty after `trim()`.                                                            |
-| `isBoolean`               | Primitive booleans.                                                                                  |
-| `isBooleanLike`           | Primitive booleans or boxed `Boolean` objects.                                                       |
-| `isBoxedBigInt`           | Boxed `BigInt` objects.                                                                              |
-| `isBoxedBoolean`          | Boxed `Boolean` objects.                                                                             |
-| `isBoxedNumber`           | Boxed `Number` objects.                                                                              |
-| `isBoxedPrimitive`        | Boxed `BigInt`, `Boolean`, `Number`, or `String` objects.                                            |
-| `isBoxedString`           | Boxed `String` objects.                                                                              |
-| `isConstructor`           | Functions whose prototype indicates they should be called with `new`.                                |
-| `isDate`                  | `instanceof Date`.                                                                                   |
-| `isEmptyArray`            | Arrays whose `length` is `0`.                                                                        |
-| `isEmptyRecord`           | Plain objects with no own enumerable keys.                                                           |
-| `isEmptyString`           | Strings of length `0`.                                                                               |
-| `isError`                 | `instanceof Error`.                                                                                  |
-| `isFinite`                | Number-like inputs that are neither `NaN` nor ±`Infinity`.                                           |
-| `isFunction`              | Callables that are not constructors/classes.                                                         |
-| `isGenerator`             | Functions whose constructor name is `GeneratorFunction`.                                             |
-| `isInteger`               | Values where `Number.isInteger(value)` succeeds.                                                     |
-| `isIntegerGreaterOrEqual` | Integers greater than or equal to the provided threshold.                                            |
-| `isIntegerGreaterThan`    | Integers strictly greater than the provided threshold.                                               |
-| `isIntegerLessOrEqual`    | Integers less than or equal to the provided threshold.                                               |
-| `isIntegerLessThan`       | Integers strictly less than the provided threshold.                                                  |
-| `isNaN`                   | Number-like inputs whose numeric value is `NaN`.                                                     |
-| `isNegativeInteger`       | Integers strictly below zero.                                                                        |
-| `isNegativeIntegerOrZero` | Integers that are zero or below.                                                                     |
-| `isNodeError`             | Objects matching `NodeJS.ErrnoException` shape (they expose `code`).                                 |
-| `isNonBlankString`        | Strings containing non-whitespace characters.                                                        |
-| `isNonEmptyArray`         | Arrays with at least one element.                                                                    |
-| `isNonEmptyRecord`        | Plain objects that own at least one key.                                                             |
-| `isNonEmptyString`        | Strings whose length is greater than `0`.                                                            |
-| `isNonNull`               | Values that are not strictly `null`.                                                                 |
-| `isNonNullable`           | Values excluding both `null` and `undefined`.                                                        |
-| `isNonUndefined`          | Values that are not `undefined`.                                                                     |
-| `isNull`                  | Strict `null` checks.                                                                                |
-| `isNullable`              | Values that are either `null` or `undefined`.                                                        |
-| `isNumber`                | Primitive numbers (including `NaN`/`Infinity`).                                                      |
-| `isNumberLike`            | Number or bigint primitives plus boxed `Number`/`BigInt` objects.                                    |
-| `isObject`                | Non-null objects that are not arrays.                                                                |
-| `isObjectLike`            | Non-null objects or functions.                                                                       |
-| `isPositiveInteger`       | Integers strictly above zero.                                                                        |
-| `isPositiveIntegerOrZero` | Integers that are zero or above.                                                                     |
-| `isPrimitive`             | String, number, boolean, or bigint primitives.                                                       |
-| `isPromise`               | Objects whose constructor is `Promise`.                                                              |
-| `isRecord`                | Plain objects (default `Object` constructor, not arrays/arguments) with an optional key/value guard. |
-| `isRegExp`                | `instanceof RegExp`.                                                                                 |
-| `isString`                | Primitive strings.                                                                                   |
-| `isStringLike`            | Primitive strings or boxed `String` objects.                                                         |
-| `isSymbol`                | Primitive symbols.                                                                                   |
-| `isSyncFunction`          | Functions that are neither constructors, async, nor generator functions.                             |
-| `isType`                  | Wrapper that compares `typeOf(value)` to a `TypesLiteral`.                                           |
-| `isUndefined`             | Strict `undefined` checks.                                                                           |
+| Predicate                 | What it checks                                                                                      |
+| ------------------------- | --------------------------------------------------------------------------------------------------- |
+| `isActualFunction`        | Raw `typeof value === 'function'` check (constructors/classes pass).                                |
+| `isActualObject`          | Non-null values whose `typeof` is `'object'` (arrays included).                                     |
+| `isArray`                 | `Array.isArray` plus an optional per-element predicate.                                             |
+| `isAsyncGenerator`        | Functions whose constructor name is `AsyncGeneratorFunction`.                                       |
+| `isAsyncIterable`         | Objects implementing `Symbol.asyncIterator`.                                                        |
+| `isAsyncFunction`         | Functions whose constructor name is `AsyncFunction`.                                                |
+| `isBigInt`                | Primitive `bigint` values.                                                                          |
+| `isBigIntLike`            | Primitive bigint or boxed `BigInt` objects.                                                         |
+| `isBlankString`           | Strings that become empty after `trim()`.                                                           |
+| `isBoolean`               | Primitive booleans.                                                                                 |
+| `isBooleanLike`           | Primitive booleans or boxed `Boolean` objects.                                                      |
+| `isBoxedBigInt`           | Boxed `BigInt` objects.                                                                             |
+| `isBoxedBoolean`          | Boxed `Boolean` objects.                                                                            |
+| `isBoxedNumber`           | Boxed `Number` objects.                                                                             |
+| `isBoxedPrimitive`        | Boxed `BigInt`, `Boolean`, `Number`, or `String` objects.                                           |
+| `isBoxedString`           | Boxed `String` objects.                                                                             |
+| `isConstructor`           | Functions whose prototype indicates they should be called with `new`.                               |
+| `isDate`                  | `instanceof Date`.                                                                                  |
+| `isEmptyArray`            | Arrays whose `length` is `0`.                                                                       |
+| `isEmptyRecord`           | Plain objects with no own enumerable keys.                                                          |
+| `isEmptyString`           | Strings of length `0`.                                                                              |
+| `isError`                 | `instanceof Error`.                                                                                 |
+| `isFinite`                | Number-like inputs that are neither `NaN` nor ±`Infinity`.                                          |
+| `isFunction`              | Callables that are not constructors/classes.                                                        |
+| `isGenerator`             | Functions whose constructor name is `GeneratorFunction` or `AsyncGeneratorFunction`.                |
+| `isInteger`               | Values where `Number.isInteger(value)` succeeds.                                                    |
+| `isIntegerGreaterOrEqual` | Integers greater than or equal to the provided threshold.                                           |
+| `isIntegerGreaterThan`    | Integers strictly greater than the provided threshold.                                              |
+| `isIntegerLessOrEqual`    | Integers less than or equal to the provided threshold.                                              |
+| `isIntegerLessThan`       | Integers strictly less than the provided threshold.                                                 |
+| `isNaN`                   | Number-like inputs whose numeric value is `NaN`.                                                    |
+| `isIterable`              | Objects implementing `Symbol.iterator` or `Symbol.asyncIterator`.                                   |
+| `isNegativeInteger`       | Integers strictly below zero.                                                                       |
+| `isNegativeIntegerOrZero` | Integers that are zero or below.                                                                    |
+| `isNodeError`             | Objects matching `NodeJS.ErrnoException` shape (they expose `code`).                                |
+| `isNonBlankString`        | Strings containing non-whitespace characters.                                                       |
+| `isNonEmptyArray`         | Arrays with at least one element.                                                                   |
+| `isNonEmptyRecord`        | Plain objects that own at least one key.                                                            |
+| `isNonEmptyString`        | Strings whose length is greater than `0`.                                                           |
+| `isNonNull`               | Values that are not strictly `null`.                                                                |
+| `isNonNullable`           | Values excluding both `null` and `undefined`.                                                       |
+| `isNonUndefined`          | Values that are not `undefined`.                                                                    |
+| `isNull`                  | Strict `null` checks.                                                                               |
+| `isNullable`              | Values that are either `null` or `undefined`.                                                       |
+| `isNumber`                | Primitive numbers (including `NaN`/`Infinity`).                                                     |
+| `isNumberLike`            | Number or bigint primitives plus boxed `Number`/`BigInt` objects.                                   |
+| `isObject`                | Non-null objects that are not arrays.                                                               |
+| `isObjectLike`            | Non-null objects or functions.                                                                      |
+| `isPositiveInteger`       | Integers strictly above zero.                                                                       |
+| `isPositiveIntegerOrZero` | Integers that are zero or above.                                                                    |
+| `isPrimitive`             | String, number, boolean, or bigint primitives.                                                      |
+| `isPromiseLike`           | Objects exposing a callable `then` method.                                                          |
+| `isPromise`               | Objects whose constructor is `Promise`.                                                             |
+| `isRecord`                | Plain objects (default `Object` constructor, not arrays/arguments).                                 |
+| `isRegExp`                | `instanceof RegExp`.                                                                                |
+| `isString`                | Primitive strings.                                                                                  |
+| `isStringLike`            | Primitive strings or boxed `String` objects.                                                        |
+| `isSyncGenerator`         | Functions whose constructor name is `GeneratorFunction`.                                            |
+| `isSyncIterable`          | Objects implementing `Symbol.iterator`.                                                             |
+| `isSymbol`                | Primitive symbols.                                                                                  |
+| `isSyncFunction`          | Functions that are neither constructors, async, nor generator functions.                            |
+| `isType`                  | Wrapper that compares `typeOf(value)` to a `TypesLiteral`.                                          |
+| `isUndefined`             | Strict `undefined` checks.                                                                          |
+| `typeOf`                  | Normalized `typeof` replacement (array, record, async-function, constructor, etc.).                 |
+| `toBigInt`                | Returns the primitive bigint value from either a primitive or `BigInt` wrapper.                     |
+| `toBoolean`               | Returns the primitive boolean value from either a primitive or `Boolean` wrapper.                   |
+| `toNumber`                | Returns the primitive number value from either a primitive or `Number` wrapper.                     |
+| `toPrimitive`             | Unboxes any boxed primitive (`Boolean`, `Number`, `String`, `BigInt`) to its primitive counterpart. |
+| `toString`                | Returns the primitive string value from either a primitive or `String` wrapper.                     |
 
 Need a normalized descriptor instead of a boolean? Reach for `typeOf` helper function and the `Types`/`TypesLiteral` TypeScript helpers.
 

@@ -8,17 +8,17 @@ export type Primitive = boolean | bigint | number | string;
 
 export type SyncFunction = (...args: unknown[]) => Exclude<unknown, Promise<unknown>>;
 
-export type TypesLiteral = 'array' | 'async-function' | 'bigint' | 'boolean' | 'constructor' | 'error' | 'date' | 'generator' | 'node-error' | 'null' | 'number' | 'object' | 'promise' | 'record' | 'regexp' | 'string' | 'symbol' | 'sync-function' | 'undefined';
+export type TypesLiteral = 'array' | 'async-function' | 'async-generator' | 'bigint' | 'boolean' | 'constructor' | 'error' | 'date' | 'node-error' | 'null' | 'number' | 'object' | 'promise' | 'record' | 'regexp' | 'string' | 'symbol' | 'sync-function' | 'sync-generator' | 'undefined';
 
 export enum Types {
 	Array = 'array',
 	AsyncFunction = 'async-function',
+	AsyncGenerator = 'async-generator',
 	BigInt = 'bigint',
 	Boolean = 'boolean',
 	Constructor = 'constructor',
 	Error = 'error',
 	Date = 'date',
-	Generator = 'generator',
 	NodeError = 'node-error',
 	Null = 'null',
 	Number = 'number',
@@ -29,5 +29,6 @@ export enum Types {
 	String = 'string',
 	Symbol = 'symbol',
 	SyncFunction = 'sync-function',
+	SyncGenerator = 'sync-generator',
 	Undefined = 'undefined',
 }

@@ -57,9 +57,20 @@ it('isIntegerGreaterOrEqual(x)', function () {
 	expect(isIntegerGreaterOrEqual(Date, 8)).to.be.false;
 	expect(isIntegerGreaterOrEqual(() => 0, 8)).to.be.false;
 	expect(isIntegerGreaterOrEqual(async () => 0, 8)).to.be.false;
+	expect(isIntegerGreaterOrEqual((async () => 0)(), 8)).to.be.false;
+	expect(isIntegerGreaterOrEqual({ then: () => 0 }, 8)).to.be.false;
 	expect(isIntegerGreaterOrEqual(function * () {
 		yield 0;
 	}, 8)).to.be.false;
+	expect(isIntegerGreaterOrEqual((function * () {
+		yield 0;
+	})(), 8)).to.be.false;
+	expect(isIntegerGreaterOrEqual(async function * () {
+		yield 0;
+	}, 8)).to.be.false;
+	expect(isIntegerGreaterOrEqual((async function * () {
+		yield 0;
+	})(), 8)).to.be.false;
 	expect(isIntegerGreaterOrEqual(new Error('error'), 8)).to.be.false;
 	expect(isIntegerGreaterOrEqual(new Promise((resolve) => {
 		resolve(0);

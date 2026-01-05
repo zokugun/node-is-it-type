@@ -57,9 +57,20 @@ it('isEmptyRecord(x)', function () {
 	expect(isEmptyRecord(Date)).to.be.false;
 	expect(isEmptyRecord(() => 0)).to.be.false;
 	expect(isEmptyRecord(async () => 0)).to.be.false;
+	expect(isEmptyRecord((async () => 0)())).to.be.false;
+	expect(isEmptyRecord({ then: () => 0 })).to.be.false;
 	expect(isEmptyRecord(function * () {
 		yield 0;
 	})).to.be.false;
+	expect(isEmptyRecord((function * () {
+		yield 0;
+	})())).to.be.false;
+	expect(isEmptyRecord(async function * () {
+		yield 0;
+	})).to.be.false;
+	expect(isEmptyRecord((async function * () {
+		yield 0;
+	})())).to.be.false;
 	expect(isEmptyRecord(new Error('error'))).to.be.false;
 	expect(isEmptyRecord(new Promise((resolve) => {
 		resolve(0);
