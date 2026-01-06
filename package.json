@@ -1,7 +1,7 @@
 {
 	"name": "@zokugun/is-it-type",
 	"description": "Zero-dependency TypeScript predicates for confidently checking any value.",
-	"version": "0.3.0",
+	"version": "0.4.0",
 	"author": {
 		"name": "Baptiste Augrain",
 		"email": "daiyam@zokugun.org"

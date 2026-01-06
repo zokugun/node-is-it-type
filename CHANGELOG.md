@@ -1,5 +1,8 @@
 # Changelog
 
+## v0.4.0 | 2026-01-06
+- support cjs and esm modules
+
 ## v0.3.0 | 2026-01-05
 - add sync/async iterable functions
 - add sync/async generator functions
