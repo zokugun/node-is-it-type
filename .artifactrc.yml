@@ -15,3 +15,5 @@ artifacts:
     version: 0.2.0
   "@daiyam/artifact-gh-issuehub":
     version: 0.2.1
+  "@daiyam/artifact-npm-lib-ts":
+    version: 0.1.1

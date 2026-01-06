@@ -15,13 +15,17 @@
 	"bugs": {
 		"url": "https://github.com/zokugun/node-is-it-type/discussions/categories/issue-triage"
 	},
-	"main": "lib/index.js",
+	"type": "module",
+	"main": "lib/cjs/index.cjs",
+	"module": "lib/esm/index.js",
 	"scripts": {
+		"build": "tsdown",
+		"clean": "rimraf lib .test",
 		"commit": "cz",
 		"compile": "tsc -p src",
 		"lint": "xo",
 		"lint:fix": "xo --fix",
-		"prepack": "npm run compile",
+		"prepack": "npm run build",
 		"prepare": "husky; fixpack || true",
 		"release": "release-it",
 		"test": "vitest run",
@@ -42,6 +46,7 @@
 		"lint-staged": "^16.1.4",
 		"release-it": "^18.1.2",
 		"tsc-watch": "^6.3.0",
+		"tsdown": "^0.12.9",
 		"typescript": "^5.7.3",
 		"vitest": "^4.0.16",
 		"xo": "0.60.0"
