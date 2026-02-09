@@ -1,5 +1,8 @@
 # Changelog
 
+## v0.5.0 | 2026-02-09
+- add integer functions
+
 ## v0.4.0 | 2026-01-06
 - support cjs and esm modules
 
