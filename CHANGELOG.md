@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.5.1 | 2026-02-12
+- update dev dependencies
+- use tsc-leda to generate cjs and esm modules
+
 ## v0.5.0 | 2026-02-09
 - add integer functions
 
