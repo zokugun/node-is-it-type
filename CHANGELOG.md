@@ -1,5 +1,8 @@
 # Changelog
 
+## v0.5.2 | 2026-02-13
+- remove type predicates from `isEmptyArray`, `isEmptyRecord` and `isEmptyString`
+
 ## v0.5.1 | 2026-02-12
 - update dev dependencies
 - use tsc-leda to generate cjs and esm modules
