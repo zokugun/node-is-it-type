@@ -1,6 +1,6 @@
 import { isRecord } from './is-record.js';
 
-export function isEmptyRecord(item: unknown): item is {} {
+export function isEmptyRecord(item: unknown): boolean {
 	if(!isRecord(item)) {
 		return false;
 	}
