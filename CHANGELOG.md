@@ -1,5 +1,8 @@
 # Changelog
 
+## v0.6.0 | 2026-02-22
+- add overloaded type predicates that return `boolean` when no generics are passed
+
 ## v0.5.2 | 2026-02-13
 - remove type predicates from `isEmptyArray`, `isEmptyRecord` and `isEmptyString`
 
