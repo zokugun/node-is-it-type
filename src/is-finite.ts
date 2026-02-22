@@ -1,6 +1,9 @@
 import { isNumberLike } from './is-number-like.js';
+import { type Numeric } from './types.js';
 
-export function isFinite(item: unknown): boolean {
+function isFinite(item: unknown): boolean;
+function isFinite<T extends Numeric>(item: unknown): item is T;
+function isFinite(item: unknown): boolean {
 	if(!isNumberLike(item)) {
 		return false;
 	}
@@ -11,3 +14,5 @@ export function isFinite(item: unknown): boolean {
 
 	return !Number.isNaN(item) && item !== Infinity;
 }
+
+export { isFinite };

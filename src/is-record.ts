@@ -1,6 +1,9 @@
 const ARGUMENTS_TAG = '[object Arguments]';
 
-export function isRecord<T>(item: unknown, test?: (key: string, value: unknown) => value is T): item is Record<string, T> {
+function isRecord<T extends Record<string, unknown>>(item: unknown | T): item is T;
+function isRecord(item: unknown, test: (key: string, value: unknown) => boolean): boolean;
+function isRecord<T>(item: unknown, test: (key: string, value: unknown) => value is T): item is Record<string, T>;
+function isRecord(item: unknown, test?: (key: string, value: unknown) => boolean): boolean {
 	if(item === null || typeof item !== 'object' || Array.isArray(item)) {
 		return false;
 	}
@@ -23,3 +26,5 @@ export function isRecord<T>(item: unknown, test?: (key: string, value: unknown) 
 
 	return true;
 }
+
+export { isRecord };

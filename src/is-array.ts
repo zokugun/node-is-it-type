@@ -1,4 +1,7 @@
-export function isArray<T>(item: unknown, test?: (item: unknown) => item is T): item is T[] {
+function isArray<T extends unknown[]>(item: unknown | T): item is T;
+function isArray(item: unknown, test: (item: unknown) => boolean): boolean;
+function isArray<T>(item: unknown, test: (item: unknown) => item is T): item is T[];
+function isArray(item: unknown, test?: (item: unknown) => boolean): boolean {
 	if(!Array.isArray(item)) {
 		return false;
 	}
@@ -13,3 +16,5 @@ export function isArray<T>(item: unknown, test?: (item: unknown) => item is T): 
 
 	return true;
 }
+
+export { isArray };

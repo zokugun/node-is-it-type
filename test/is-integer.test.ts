@@ -77,3 +77,26 @@ it('isInteger(x)', function () {
 	}))).to.be.false;
 	expect(isInteger(Symbol(0))).to.be.false;
 });
+
+it('isInteger(x) - cond/ng', () => {
+	let pi = Math.PI;
+
+	if(isInteger(pi)) {
+		pi += 1;
+	}
+	else {
+		pi -= 1;
+	}
+
+	expect(pi).to.equals(Math.PI - 1);
+});
+
+it('isInteger(x) - cond/wg', () => {
+	let pi = Math.PI as unknown;
+
+	if(isInteger<number>(pi)) {
+		pi += 1;
+	}
+
+	expect(pi).to.equals(Math.PI);
+});

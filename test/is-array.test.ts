@@ -127,3 +127,14 @@ it('isArray(x, test)', function () {
 	}), isNumber)).to.be.false;
 	expect(isArray(Symbol(0), isNumber)).to.be.false;
 });
+
+it('isArray(x) - union', () => {
+	const value = [1, 2] as number[] | number;
+
+	if(isArray(value)) {
+		expect(value[0] + value[1]).to.equals(3);
+	}
+	else {
+		expect(value).to.not.exist;
+	}
+});
