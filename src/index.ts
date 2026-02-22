@@ -21,6 +21,7 @@ export * from './is-date.js';
 export * from './is-empty-array.js';
 export * from './is-empty-record.js';
 export * from './is-empty-string.js';
+export * from './is-equals.js';
 export * from './is-error.js';
 export * from './is-finite.js';
 export * from './is-function.js';
