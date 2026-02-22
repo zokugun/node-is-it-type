@@ -1,5 +1,8 @@
 # Changelog
 
+## v0.7.0 | 2026-02-22
+- add equality functions `isEquals` and `isNotEquals`
+
 ## v0.6.0 | 2026-02-22
 - add overloaded type predicates that return `boolean` when no generics are passed
 
