@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.8.0 | 2026-03-07
+- add functions `isIntegerBetween` and `isNumberBetween`
+- remove `isNotEquals` function
+
 ## v0.7.0 | 2026-02-22
 - add equality functions `isEquals` and `isNotEquals`
 
