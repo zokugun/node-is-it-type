@@ -46,7 +46,6 @@ export * from './is-non-empty-string.js';
 export * from './is-non-null.js';
 export * from './is-non-nullable.js';
 export * from './is-non-undefined.js';
-export * from './is-not-equals.js';
 export * from './is-null.js';
 export * from './is-nullable.js';
 export * from './is-number-between.js';
