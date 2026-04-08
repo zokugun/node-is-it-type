@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.8.1 | 2026-04-08
+- use locked dependencies
+- use GitHub Environment to publish
+
 ## v0.8.0 | 2026-03-07
 - add functions `isIntegerBetween` and `isNumberBetween`
 - remove `isNotEquals` function
