@@ -1,10 +1,10 @@
 artifacts:
   "@daiyam/artifact-lang-js":
-    version: 0.10.3
+    version: 0.10.4
     provides:
       - "20"
   "@daiyam/artifact-lang-ts":
-    version: 0.7.0
+    version: 0.7.1
   "@daiyam/artifact-npm":
     version: 0.7.6
   "@daiyam/artifact-npm-ts":

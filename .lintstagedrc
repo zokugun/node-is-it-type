@@ -1,4 +1,5 @@
 {
 	"package.json": "fixpack",
-	"*.ts": "xo"
+	"*.ts": "xo",
+	".github/**/*.yml": "zizmor"
 }
