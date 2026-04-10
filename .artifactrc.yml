@@ -1,10 +1,10 @@
 artifacts:
   "@daiyam/artifact-lang-js":
-    version: 0.10.4
+    version: 0.10.10
     provides:
       - "20"
   "@daiyam/artifact-lang-ts":
-    version: 0.7.1
+    version: 0.7.4
   "@daiyam/artifact-npm":
     version: 0.7.6
   "@daiyam/artifact-npm-ts":
@@ -14,6 +14,6 @@ artifacts:
   "@daiyam/artifact-test-vitest-ts":
     version: 0.4.1
   "@daiyam/artifact-gh-issuehub":
-    version: 0.5.1
+    version: 0.5.2
   "@daiyam/artifact-npm-lib-ts":
     version: 0.2.8

@@ -32,6 +32,7 @@
 		}
 	},
 	"scripts": {
+		"audit:fix": "npm audit fix --min-release-age=0",
 		"build": "npm run clean && npm run build:lib",
 		"build:lib": "tsc-leda generate",
 		"build:package": "tsc-leda update-package",
@@ -41,7 +42,7 @@
 		"compile:src": "tsc -p src",
 		"compile:test": "tsc -p test",
 		"lint": "xo",
-		"lint:all": "fixpack && npm run ci:lint && npm run lint",
+		"lint:all": "fixpack && npm audit && npm run ci:lint && npm run lint",
 		"lint:fix": "xo --fix",
 		"prepack": "npm run build",
 		"prepare": "husky; fixpack || true",

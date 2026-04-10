@@ -1,5 +1,0 @@
-{
-	"package.json": "fixpack",
-	"*.ts": "xo",
-	".github/**/*.yml": "zizmor"
-}
